@@ -12,7 +12,15 @@ alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
 ```bash
-gitdotfiles status.showUntrackedFiles no
+gitdotfiles remote add origin git@github.com:WSTRN/.dotfiles.git
+```
+
+```bash
+gitdotfiles pull origin master
+```
+
+```bash
+gitdotfiles config status.showUntrackedFiles no
 ```
 
 ## Example
