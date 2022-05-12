@@ -29,8 +29,9 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-
-#my config
+#
+#####my config#####
+#
 zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 zinit ice lucid wait='1'
@@ -63,8 +64,8 @@ esac
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-#
-#
+
+
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias ls='ls --color=auto'
@@ -79,18 +80,37 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
+
+##options
+setopt  autocd autopushd pushdignoredups 
+
+
+## some aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-export EDITOR=/usr/local/bin/nvim
-export TERM="tmux-256color"
 
 alias f='neofetch'
 alias vi='nvim'
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias d='dirs -v | head -10'
+alias 1='cd ~1'
+alias 2='cd ~2'
+alias 3='cd ~3'
+alias 4='cd ~4'
+alias 5='cd ~5'
+alias 6='cd ~6'
+alias 7='cd ~7'
+alias 8='cd ~8'
+alias 9='cd ~9'
 
+##export
+export EDITOR=/usr/local/bin/nvim
+export TERM="tmux-256color"
 export PATH=~/.local/bin:"$PATH"
 export PATH=~/GitCode/zephyrproject/zephyr:"$PATH"
 export ZEPHYR_BASE=~/GitCode/zephyrproject/zephyr
+
+
+
 

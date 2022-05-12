@@ -54,8 +54,8 @@ noremap sl :set splitright<CR>:vsplit<CR>
 noremap sj :set nosplitright<CR>:vsplit<CR>
 noremap sk :set splitbelow<CR>:split<CR>
 noremap si :set nosplitbelow<CR>:split<CR>
-noremap sv <C-w>t<C-w>K
-noremap sh <C-w>t<C-w>H
+noremap sh <C-w>t<C-w>K
+noremap sv <C-w>t<C-w>H
 noremap <LEADER>l <C-w>l
 noremap <LEADER>j <C-w>h
 noremap <LEADER>k <C-w>j
@@ -104,10 +104,10 @@ nnoremap <LEADER>u :UndotreeToggle<CR>
 "fzf
 "============
 nnoremap <LEADER>/ :FZF<CR>
-nnoremap <LEADER>/f <cmd>Telescope find_files<cr>
-nnoremap <LEADER>/g <cmd>Telescope live_grep<cr>
-nnoremap <LEADER>/b <cmd>Telescope buffers<cr>
-nnoremap <LEADER>/h <cmd>Telescope help_tags<cr>
+"nnoremap <LEADER>/f <cmd>Telescope find_files<cr>
+nnoremap <LEADER>g <cmd>Telescope live_grep<cr>
+nnoremap <LEADER>/b <cmd>Telescope buffers theme=dropdown<cr>
+nnoremap <LEADER>/h <cmd>Telescope help_tags theme=dropdown<cr>
 
 
 "============
@@ -247,6 +247,7 @@ Plug 'mg979/vim-xtabline'
 Plug 'mhinz/vim-startify'
 Plug 'honza/vim-snippets'
 Plug 'RRethy/vim-illuminate'  "highlight word
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  "highlight language
 Plug 'rhysd/vim-clang-format'
 Plug 'jiangmiao/auto-pairs'
 Plug 'skywind3000/vim-terminal-help' "ALT+'=' Toggle terminal
@@ -362,10 +363,58 @@ let g:clang_format#style_options = {
 
 
 
+" ===
+" === telescope
+" ===
 
-
-
-
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
+    mappings = {
+      i = {
+        -- map actions.which_key to <C-h> (default: <C-/>)
+        -- actions.which_key shows the mappings for your picker,
+        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+	["<C-h>"] = "select_horizontal",
+	["<C-v>"] = "select_vertical",
+      },
+      n = {
+	["k"] = "move_selection_next",
+	["i"] = "move_selection_previous",
+	["<C-h>"] = "select_horizontal",
+	["<C-v>"] = "select_vertical",
+	["j"] = false
+      } 
+    }
+  },
+  pickers = {
+    -- Default configuration for builtin pickers goes here:
+    -- picker_name = {
+    --   picker_config_key = value,
+    --   ...
+    -- }
+    -- Now the picker_config_key will be applied every time you call this
+    -- builtin picker
+    live_grep = {
+	theme = "dropdown",
+	
+	layout_config = {
+	    width = 80,
+	    height = 0.25,
+	}
+    }
+  },
+  extensions = {
+    -- Your extension configuration goes here:
+    -- extension_name = {
+    --   extension_config_key = value,
+    -- }
+    -- please take a look at the readme of the extension you want to configure
+  }
+}
+EOF
 
 
 
