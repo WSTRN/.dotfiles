@@ -247,7 +247,7 @@ Plug 'mg979/vim-xtabline'
 Plug 'mhinz/vim-startify'
 Plug 'honza/vim-snippets'
 Plug 'RRethy/vim-illuminate'  "highlight word
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  "highlight language
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  "highlight language
 Plug 'rhysd/vim-clang-format'
 Plug 'jiangmiao/auto-pairs'
 Plug 'skywind3000/vim-terminal-help' "ALT+'=' Toggle terminal
