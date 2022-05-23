@@ -29,7 +29,7 @@ set shortmess+=c
 
 
 "============
-"map key
+"key map
 "============
 let mapleader=" "
 noremap e i

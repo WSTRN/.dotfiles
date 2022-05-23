@@ -108,8 +108,8 @@ alias 9='cd ~9'
 export EDITOR=nvim
 export TERM="tmux-256color"
 export PATH=~/.local/bin:"$PATH"
-export PATH=~/GitCode/zephyrproject/zephyr:"$PATH"
-export ZEPHYR_BASE=~/GitCode/zephyrproject/zephyr
+#export PATH=~/Code/zephyrproject/zephyr:"$PATH"
+#export ZEPHYR_BASE=~/Code/zephyrproject/zephyr
 
 
 
