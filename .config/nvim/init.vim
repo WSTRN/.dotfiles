@@ -15,6 +15,7 @@ set showcmd
 set wrap
 set nocompatible
 set mouse=a
+set termguicolors
 filetype on
 filetype indent on
 filetype plugin on
@@ -54,8 +55,8 @@ noremap sl :set splitright<CR>:vsplit<CR>
 noremap sj :set nosplitright<CR>:vsplit<CR>
 noremap sk :set splitbelow<CR>:split<CR>
 noremap si :set nosplitbelow<CR>:split<CR>
-noremap sh <C-w>t<C-w>K
-noremap sv <C-w>t<C-w>H
+noremap sh <C-w>t<C-w>H
+noremap sv <C-w>t<C-w>K
 noremap <LEADER>l <C-w>l
 noremap <LEADER>j <C-w>h
 noremap <LEADER>k <C-w>j
