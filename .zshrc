@@ -92,6 +92,7 @@ alias l='ls -CF'
 
 alias f='neofetch'
 alias vi='nvim'
+alias ta='tmux attach'
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias d='dirs -v | head -10'
 alias 1='cd ~1'
