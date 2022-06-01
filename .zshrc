@@ -105,12 +105,34 @@ alias 7='cd ~7'
 alias 8='cd ~8'
 alias 9='cd ~9'
 
+##vi-mode
+bindkey -v
+bindkey -M vicmd "e" vi-insert
+bindkey -M vicmd "E" vi-insert-bol
+bindkey -M vicmd "h" vi-forward-word-end
+bindkey -M vicmd "H" vi-forward-blank-word-end
+bindkey -M vicmd "k" down-line-or-history
+bindkey -M vicmd "i" up-line-or-history
+bindkey -M vicmd "j" vi-backward-char
+###############################change cursor in vimode
+#function zle-keymap-select {
+	#if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+		#echo -ne '\e[1 q'
+	#elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+		#echo -ne '\e[5 q'
+  #fi
+#}
+#zle -N zle-keymap-select
+###############################
+# Use beam shape cursor on startup.
+echo -ne '\e[1 q'
+echo -ne "\033]12;#ffb86c\007"
+
+
 ##export
 export EDITOR=nvim
 export TERM="tmux-256color"
 export PATH=~/.local/bin:"$PATH"
 #export PATH=~/Code/zephyrproject/zephyr:"$PATH"
 #export ZEPHYR_BASE=~/Code/zephyrproject/zephyr
-
-
 
