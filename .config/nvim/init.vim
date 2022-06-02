@@ -61,7 +61,7 @@ noremap <LEADER>l <C-w>l
 noremap <LEADER>j <C-w>h
 noremap <LEADER>k <C-w>j
 noremap <LEADER>i <C-w>k
-noremap <C-left> ::vertical resize-5<CR>
+noremap <C-left> :vertical resize-5<CR>
 noremap <C-right> :vertical resize+5<CR>
 noremap <C-up> :res +5<CR>
 noremap <C-down> :res -5<CR>
@@ -84,22 +84,11 @@ nnoremap <LEADER>9 9gt
 nnoremap <LEADER>0 :tablast<CR>
 
 
-"=============
-"NERDTree
-"=============
-"nnoremap tt :NERDTreeToggle<CR>
-"nnoremap tc :NERDTreeTabsClose<CR>:NERDTreeToggle<CR>
-"nnoremap tf :NERDTreeFocus<CR>
-
 "============
 "Undotree
 "============
 nnoremap <LEADER>u :UndotreeToggle<CR>
 
-"============
-"NERDCommenter
-"============
-"<leader>c<space>
 
 "============
 "fzf
@@ -119,9 +108,10 @@ xmap <leader>f :ClangFormat<CR>
 
 
 "============
-"nvtrem
+"vista
 "============
-"noremap <A-s> :lua require("nvterm.terminal").toggle "vertical"<CR>
+noremap <LEADER>v :Vista!!<CR>
+"noremap <c-t> :silent! Vista finder coc<CR>
 
 
 
@@ -165,29 +155,6 @@ function! s:show_documentation()
 endfunction
 "set signcolumn=number
 
-
-"============
-"vista
-"============
-noremap <LEADER>v :Vista!!<CR>
-"noremap <c-t> :silent! Vista finder coc<CR>
-
-"============
-"coc-snippets
-"============
-"" Use <C-l> for trigger snippet expand.
-"imap <C-l> <Plug>(coc-snippets-expand)
-"" Use <C-j> for select text for visual placeholder of snippet.
-"vmap <C-j> <Plug>(coc-snippets-select)
-"" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-"let g:coc_snippet_next = '<c-j>'
-"" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-"let g:coc_snippet_prev = '<c-k>'
-"" Use <C-j> for both expand and jump (make expand higher priority.)
-"imap <C-j> <Plug>(coc-snippets-expand-jump)
-""" Use <leader>x for convert visual selected code to snippet
-"xmap <leader>x  <Plug>(coc-convert-snippet)
-
 inoremap <silent><expr> <TAB>
 	  \ pumvisible() ? "\<C-n>" : 
 	  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -227,7 +194,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'folke/tokyonight.nvim', { 'branch':'main' }
 "Plug 'morhetz/gruvbox'
 "Plug 'olimorris/onedarkpro.nvim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "nerdtree
 "Plug 'preservim/nerdtree'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -292,19 +259,9 @@ colorscheme tokyonight
 "
 "color gruvbox
 "============================
+"
 
 
-" ===
-" === NERDTree
-" ===
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" Open the existing NERDTree on each new tab.
-"autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" Mirror the NERDTree before showing it. This makes it the same on all tabs.
-"autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-" Open the existing NERDTree on each new tab.
-"let g:NERDTreeGitStatusConcealBrackets = 1
-"let g:NERDTreeGitStatusIndicatorMapCustom = { 'Modified'  :'✹', 'Staged'    :'✚', 'Untracked' :'✭', 'Renamed'   :'➜', 'Unmerged'  :'═', 'Deleted'   :'✖', 'Dirty'     :'✗', 'Ignored'   :'☒', 'Clean'     :'✔︎', 'Unknown'   :'?'  }
 
 " ===
 " === xtabline
@@ -362,12 +319,6 @@ let g:clang_format#style_options = {
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11",
             \ "BreakBeforeBraces" : "Stroustrup"}
-
-
-" ===
-" === snippets
-" ===
-
 
 
 
