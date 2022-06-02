@@ -119,6 +119,13 @@ xmap <leader>f :ClangFormat<CR>
 
 
 "============
+"nvtrem
+"============
+"noremap <A-s> :lua require("nvterm.terminal").toggle "vertical"<CR>
+
+
+
+"============
 "coc.nvim
 "============
 nmap <LEADER>t :CocCommand explorer<CR>
@@ -369,7 +376,7 @@ let g:clang_format#style_options = {
 " ===
 
 lua << EOF
-require('telescope').setup{
+require('telescope').setup({
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
@@ -414,7 +421,10 @@ require('telescope').setup{
     -- }
     -- please take a look at the readme of the extension you want to configure
   }
-}
+})
+
+
+
 EOF
 
 
