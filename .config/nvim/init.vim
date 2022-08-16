@@ -123,7 +123,7 @@ noremap <LEADER>v :Vista!!<CR>
 "============
 "NvimTreeToggle
 "============
-nnoremap <LEADER>t :NvimTreeToggle<CR>
+nnoremap <LEADER>t :Neotree toggle=true<CR>
 
 
 nnoremap <silent> <LEADER>h :call <SID>show_documentation()<CR>
@@ -184,7 +184,10 @@ Plug 'liuchengxu/vista.vim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'kyazdani42/nvim-tree.lua'
+Plug 'MunifTanjim/nui.nvim'
+Plug 's1n7ax/nvim-window-picker'
+Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 
@@ -246,7 +249,8 @@ let g:startify_custom_header = [
  \' \  \:\  ~~~   \  \::/ /:/   \  \:\  /:/  \  \:\|  |:|     \__\::/  \  \:\'      ,
  \'  \  \:\        \  \:\/:/     \  \:\/:/    \  \:\__|:|     /__/:/    \  \:\'     ,
  \'   \  \:\        \  \::/       \  \::/      \__\::::/      \__\/      \  \:\'    ,
- \'    \__\/         \__\/         \__\/           ~~~~                   \__\/'    
+ \'    \__\/         \__\/         \__\/           ~~~~                   \__\/'    ,
+ \'     I really  '
  \]
 autocmd User Startified for key in ['b', 's', 't', 'v', 'i' ] |     
 	\ execute 'nunmap <buffer>' key | endfor

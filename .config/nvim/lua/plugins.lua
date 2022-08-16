@@ -232,43 +232,147 @@ require 'feline'.setup {
 		bufnames = {}
 	}
 }
+--window-picker-----------------------------------------------------------------------
+require'window-picker'.setup()
 
---nvim-tree----------------------------------------------------------------------------
-require('nvim-tree').setup {
-	open_on_tab = true,
-	actions = {
-		change_dir = {
-			enable = true
+--neo-tree----------------------------------------------------------------------------
+require("neo-tree").setup({
+	close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+	default_component_configs = {
+		icon = {
+			folder_closed = "",
+			folder_open = "",
+			folder_empty = "",
+			-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
+			-- then these will never be used.
+			default = "",
+			highlight = "NeoTreeFileIcon"
 		},
-		open_file = {
-			quit_on_open = true
+		modified = {
+			symbol = "[+]",
+			highlight = "NeoTreeModified",
+		},
+		name = {
+			trailing_slash = false,
+			use_git_status_colors = true,
+			highlight = "NeoTreeFileName",
+		},
+		git_status = {
+			symbols = {
+				-- Change type
+				added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+				modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+				deleted   = "✖", -- this can only be used in the git_status source
+				renamed   = "", -- this can only be used in the git_status source
+				--	 Status type
+				untracked = "",
+				ignored   = "",
+				unstaged  = "",
+				staged    = "",
+				conflict  = "",
+			}
 		},
 	},
-	view = {
+	window = {
+		position = "left",
+		width = 28,
+		mapping_options = {
+			noremap = true,
+			nowait = true,
+		},
 		mappings = {
-			list = {
-				{ key = { "s" }, action = "" },
-				{ key = { "<CR>", "e", "<2-LeftMouse>" }, action = "edit" },
-				{ key = "sh", action = "vsplit" },
-				{ key = "sv", action = "split" },
-				{ key = "t", action = "tabnew" },
-				{ key = "=", action = "cd" },
+			["o"] = {
+				"toggle_node",
+				nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
+			},
+			["<cr>"] = "open",
+			["sh"] = "open_split",
+			["sv"] = "open_vsplit",
+			-- ["S"] = "split_with_window_picker",
+			-- ["s"] = "vsplit_with_window_picker",
+			["t"] = "open_tabnew",
+			["w"] = "open_with_window_picker",
+			["C"] = "close_node",
+			["z"] = "close_all_nodes",
+			--["Z"] = "expand_all_nodes",
+			["a"] = {
+				"add",
+				-- some commands may take optional config options, see `:h neo-tree-mappings` for details
+				config = {
+					show_path = "none" -- "none", "relative", "absolute"
+				}
+			},
+			["A"] = "add_directory", -- also accepts the optional config.show_path option like "add".
+			["d"] = "delete",
+			["r"] = "rename",
+			["y"] = "copy_to_clipboard",
+			["x"] = "cut_to_clipboard",
+			["p"] = "paste_from_clipboard",
+			["c"] = "copy",
+			-- takes text input for destination, also accepts the optional config.show_path option like "add":
+			-- ["c"] = {
+			--  "copy",
+			--  config = {
+			--    show_path = "none" -- "none", "relative", "absolute"
+			--  }
+			--}
+			["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+			["q"] = "close_window",
+			["R"] = "refresh",
+			["?"] = "show_help",
+			["<"] = "prev_source",
+			[">"] = "next_source",
+		}
+	},
+	nesting_rules = {},
+	filesystem = {
+		follow_current_file = false, -- This will find and focus the file in the active buffer every
+		use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
+		-- instead of relying on nvim autocmd events.
+		window = {
+			mappings = {
+				["<bs>"] = "navigate_up",
+				["."] = "set_root",
+				["H"] = "toggle_hidden",
+				["/"] = "fuzzy_finder",
+				["D"] = "fuzzy_finder_directory",
+				["f"] = "filter_on_submit",
+				["<c-x>"] = "clear_filter",
+				["[g"] = "prev_git_modified",
+				["]g"] = "next_git_modified",
+			}
+		}
+	},
+	buffers = {
+		follow_current_file = true, -- This will find and focus the file in the active buffer every
+		-- time the current file is changed while the tree is open.
+		group_empty_dirs = true, -- when true, empty folders will be grouped together
+		show_unloaded = true,
+		window = {
+			mappings = {
+				["bd"] = "buffer_delete",
+				["<bs>"] = "navigate_up",
+				["."] = "set_root",
+			}
+		},
+	},
+	git_status = {
+		window = {
+			position = "float",
+			mappings = {
+				["A"]  = "git_add_all",
+				["gu"] = "git_unstage_file",
+				["ga"] = "git_add_file",
+				["gr"] = "git_revert_file",
+				["gc"] = "git_commit",
+				["gp"] = "git_push",
+				["gg"] = "git_commit_and_push",
 			}
 		}
 	}
-}
---require('bufferline').setup {
---options = {
---mode = "tabs", -- set to "tabs" to only show tabpages instead
-----indicator_icon = '▎',
---buffer_close_icon = '', --'',
---modified_icon = '●',
-----close_icon = '',
---left_trunc_marker = '',
---right_trunc_marker = '',
---}
---}
+})
 
+--telescope------------------------------------------------------------------------
 require('telescope').setup {
 	defaults = {
 		-- Default configuration for telescope goes here:
@@ -321,6 +425,7 @@ require 'nvim-treesitter.configs'.setup {
 		"lua",
 		"vim",
 		"c",
+		"go",
 	},
 	highlight = {
 		enable = true,
@@ -402,12 +507,15 @@ cmp.setup({
 
 		--testing??????
 		['<Esc>'] = cmp.mapping.abort({ "i", "s" }),
+		--or
+		--['<C-e>'] = cmp.mapping.abort({ "i", "s" }),
+		--
 		--["<Esc>"] = cmp.mapping(function (fallback)
-			--if cmp.visible() then
-				--cmp.mapping.close()
-			--else
-				--fallback()
-			--end
+		--if cmp.visible() then
+		--cmp.mapping.close()
+		--else
+		--fallback()
+		--end
 		--end, { "i", "s" }),
 		--
 		["<Tab>"] = cmp.mapping(function(fallback)
@@ -499,7 +607,8 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'sumneko_lua', 'vimls', 'clangd', 'bashls', 'cmake', 'prosemd_lsp' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'sumneko_lua', 'vimls', 'clangd', 'bashls', 'cmake',
+	'prosemd_lsp', 'golangci_lint_ls' }
 
 for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {
