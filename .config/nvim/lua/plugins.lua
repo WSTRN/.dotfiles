@@ -36,11 +36,11 @@ local function file_osinfo()
 	local os = vim.bo.fileformat:upper()
 	local icon
 	if os == 'UNIX' then
-		icon = ' '
+		icon = '  '
 	elseif os == 'MAC' then
-		icon = ' '
+		icon = '  '
 	else
-		icon = ' '
+		icon = '  '
 	end
 	return icon .. os
 end
@@ -155,7 +155,7 @@ local comps = {
 			provider = 'lsp_client_names',
 			-- left_sep = ' ',
 			--right_sep = ' ',
-			icon = '',
+			icon = ' ',
 			--icon = '慎',
 			hl = {
 				fg = colors.yellow
@@ -238,6 +238,9 @@ require'window-picker'.setup()
 --neo-tree----------------------------------------------------------------------------
 require("neo-tree").setup({
 	close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+	source_selector = {
+		statusline = true,
+	},
 	default_component_configs = {
 		icon = {
 			folder_closed = "",
@@ -275,17 +278,33 @@ require("neo-tree").setup({
 	},
 	window = {
 		position = "left",
-		width = 28,
+		width = 30,
 		mapping_options = {
 			noremap = true,
 			nowait = true,
 		},
 		mappings = {
-			["o"] = {
-				"toggle_node",
-				nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
-			},
+			--["<Space>"] = {
+				--"toggle_node",
+				--nowait = true,
+				---- disable `nowait` if you have existing combos starting with this char that you want to use
+			--},
+			["l"] = function (state)
+				local node = state.tree:get_node()
+				if node.type == "directory" and not node:is_expanded() then
+					state.commands["toggle_node"](state)
+				end
+			end,
+			["j"] = "close_node",
+			["u"] = "prev_source",
+			["o"] = "next_source",
 			["<cr>"] = "open",
+			["e"] = "open",
+			["<Tab>"] = function (state)
+				state.commands["open"](state)
+				vim.cmd("Neotree reveal")
+			end,
+
 			["sh"] = "open_split",
 			["sv"] = "open_vsplit",
 			-- ["S"] = "split_with_window_picker",
@@ -299,7 +318,7 @@ require("neo-tree").setup({
 				"add",
 				-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 				config = {
-					show_path = "none" -- "none", "relative", "absolute"
+					show_path = "none", -- "none", "relative", "absolute"
 				}
 			},
 			["A"] = "add_directory", -- also accepts the optional config.show_path option like "add".
@@ -320,8 +339,6 @@ require("neo-tree").setup({
 			["q"] = "close_window",
 			["R"] = "refresh",
 			["?"] = "show_help",
-			["<"] = "prev_source",
-			[">"] = "next_source",
 		}
 	},
 	nesting_rules = {},
@@ -358,7 +375,7 @@ require("neo-tree").setup({
 	},
 	git_status = {
 		window = {
-			position = "float",
+			--position = "float",
 			mappings = {
 				["A"]  = "git_add_all",
 				["gu"] = "git_unstage_file",
@@ -391,25 +408,47 @@ require('telescope').setup {
 				["<C-h>"] = "select_horizontal",
 				["<C-v>"] = "select_vertical",
 				["j"] = false
-			}
-		}
+			},
+		},
 	},
 	pickers = {
-		-- Default configuration for builtin pickers goes here:
-		-- picker_name = {
-		--   picker_config_key = value,
-		--   ...
-		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
+		 --Default configuration for builtin pickers goes here:
+		 --picker_name = {
+		   --picker_config_key = value,
+		   --...
+		 --}
+		 --Now the picker_config_key will be applied every time you call this
+		 --builtin picker
 		live_grep = {
-			theme = "dropdown",
-
+			layout_strategy = "horizontal",
 			layout_config = {
-				width = 80,
-				height = 0.25,
-			}
-		}
+				prompt_position = "top",
+				preview_cutoff = 20,
+				width = 100,
+				preview_width = 60,
+				height = 30,
+			},
+		},
+		buffers = {
+			layout_strategy = "horizontal",
+			layout_config = {
+				prompt_position = "top",
+				preview_cutoff = 20,
+				width = 100,
+				preview_width = 60,
+				height = 30,
+			},
+		},
+		help_tags = {
+			layout_strategy = "horizontal",
+			layout_config = {
+				prompt_position = "top",
+				preview_cutoff = 20,
+				width = 100,
+				preview_width = 60,
+				height = 30,
+			},
+		},
 	},
 	extensions = {
 		-- Your extension configuration goes here:
@@ -419,6 +458,8 @@ require('telescope').setup {
 		-- please take a look at the readme of the extension you want to configure
 	}
 }
+
+--treesitter---------------------------------------------------------------------------------------
 require 'nvim-treesitter.configs'.setup {
 
 	ensure_installed = {

@@ -40,14 +40,15 @@ noremap i k
 noremap k j
 noremap j h
 noremap J H
-snoremap k k
-snoremap i i
 noremap I 5k
 noremap K 5j
 noremap h e
 noremap H E
 map s <nop>
 map S <nop>
+snoremap k k
+snoremap i i
+snoremap s s
 "map t <nop>
 map R :source $MYVIMRC<CR>
 nmap <C-s> :w<CR>
@@ -55,12 +56,12 @@ nmap <C-s> :w<CR>
 "============
 "split screen
 "============
-noremap sl :set splitright<CR>:vsplit<CR>
-noremap sj :set nosplitright<CR>:vsplit<CR>
-noremap sk :set splitbelow<CR>:split<CR>
-noremap si :set nosplitbelow<CR>:split<CR>
-noremap sh <C-w>t<C-w>H
-noremap sv <C-w>t<C-w>K
+nnoremap sl :set splitright<CR>:vsplit<CR>
+nnoremap sj :set nosplitright<CR>:vsplit<CR>
+nnoremap sk :set splitbelow<CR>:split<CR>
+nnoremap si :set nosplitbelow<CR>:split<CR>
+nnoremap sh <C-w>t<C-w>H
+nnoremap sv <C-w>t<C-w>K
 noremap <LEADER>l <C-w>l
 noremap <LEADER>j <C-w>h
 noremap <LEADER>k <C-w>j
@@ -101,15 +102,9 @@ nnoremap <LEADER>u :UndotreeToggle<CR>
 nnoremap <LEADER>/ :FZF<CR>
 "nnoremap <LEADER>/f <cmd>Telescope find_files<cr>
 nnoremap <LEADER>g <cmd>Telescope live_grep<cr>
-nnoremap <LEADER>/b <cmd>Telescope buffers theme=dropdown<cr>
-nnoremap <LEADER>/h <cmd>Telescope help_tags theme=dropdown<cr>
+nnoremap <LEADER>/b <cmd>Telescope buffers<cr>
+nnoremap <LEADER>/h <cmd>Telescope help_tags<cr>
 
-
-"============
-"clang-format
-"============
-"nmap <leader>f :ClangFormat<CR>
-"xmap <leader>f :ClangFormat<CR>
 
 
 "============
@@ -199,7 +194,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'honza/vim-snippets'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  "highlight language
-Plug 'rhysd/vim-clang-format'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -250,23 +244,10 @@ let g:startify_custom_header = [
  \'  \  \:\        \  \:\/:/     \  \:\/:/    \  \:\__|:|     /__/:/    \  \:\'     ,
  \'   \  \:\        \  \::/       \  \::/      \__\::::/      \__\/      \  \:\'    ,
  \'    \__\/         \__\/         \__\/           ~~~~                   \__\/'    ,
- \'     I really  '
+ \'     I really   '
  \]
 autocmd User Startified for key in ['b', 's', 't', 'v', 'i' ] |     
 	\ execute 'nunmap <buffer>' key | endfor
-
-
-" ===
-" === clang-format
-" ===
-let g:clang_format#command = "/usr/bin/clang-format-12"
-let g:clang_format#style_options = "GNU"
-let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11",
-            \ "BreakBeforeBraces" : "Stroustrup"}
 
 
 
