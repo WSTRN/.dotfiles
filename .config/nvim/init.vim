@@ -73,21 +73,33 @@ noremap <C-down> :res -5<CR>
 
 
 "============
-"tabview
+"tabs/buffers
 "============
 nnoremap <LEADER>n :tabe<CR>
-nnoremap <LEADER>= :+tabnext<CR>
-nnoremap <LEADER>- :-tabnext<CR>
-nnoremap <LEADER>1 1gt
-nnoremap <LEADER>2 2gt
-nnoremap <LEADER>3 3gt
-nnoremap <LEADER>4 4gt
-nnoremap <LEADER>5 5gt
-nnoremap <LEADER>6 6gt
-nnoremap <LEADER>7 7gt
-nnoremap <LEADER>8 8gt
-nnoremap <LEADER>9 9gt
-nnoremap <LEADER>0 :tablast<CR>
+nnoremap <silent><LEADER>] :+tabnext<CR>
+nnoremap <silent><LEADER>[ :-tabnext<CR>
+"nnoremap <LEADER>1 1gt
+"nnoremap <LEADER>2 2gt
+"nnoremap <LEADER>3 3gt
+"nnoremap <LEADER>4 4gt
+"nnoremap <LEADER>5 5gt
+"nnoremap <LEADER>6 6gt
+"nnoremap <LEADER>7 7gt
+"nnoremap <LEADER>8 8gt
+"nnoremap <LEADER>9 9gt
+"nnoremap <LEADER>0 :tablast<CR>
+nnoremap <silent><LEADER>= :BufferLineMoveNext<CR>
+nnoremap <silent><LEADER>- :BufferLineMovePrev<CR>
+nnoremap <silent><leader>1 <cmd>lua require("bufferline").go_to_buffer(1, true)<cr>
+nnoremap <silent><leader>2 <cmd>lua require("bufferline").go_to_buffer(2, true)<cr>
+nnoremap <silent><leader>3 <cmd>lua require("bufferline").go_to_buffer(3, true)<cr>
+nnoremap <silent><leader>4 <cmd>lua require("bufferline").go_to_buffer(4, true)<cr>
+nnoremap <silent><leader>5 <cmd>lua require("bufferline").go_to_buffer(5, true)<cr>
+nnoremap <silent><leader>6 <cmd>lua require("bufferline").go_to_buffer(6, true)<cr>
+nnoremap <silent><leader>7 <cmd>lua require("bufferline").go_to_buffer(7, true)<cr>
+nnoremap <silent><leader>8 <cmd>lua require("bufferline").go_to_buffer(8, true)<cr>
+nnoremap <silent><leader>9 <cmd>lua require("bufferline").go_to_buffer(9, true)<cr>
+nnoremap <silent><leader>$ <cmd>lua require("bufferline").go_to_buffer(-1, true)<cr>
 
 
 "============

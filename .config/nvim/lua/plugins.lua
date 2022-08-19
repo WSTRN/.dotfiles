@@ -224,7 +224,7 @@ require 'feline'.setup {
 	force_inactive = {
 		filetypes = {
 			'packer',
-			'NvimTree',
+			'neo-tree',
 			'fugitive',
 			'fugitiveblame'
 		},
@@ -237,7 +237,8 @@ require'window-picker'.setup()
 
 --neo-tree----------------------------------------------------------------------------
 require("neo-tree").setup({
-	close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+	close_if_last_window = true,-- Close Neo-tree if it is the last window left in the tab
+	popup_border_style = "rounded",
 	source_selector = {
 		statusline = true,
 	},
@@ -289,6 +290,7 @@ require("neo-tree").setup({
 				--nowait = true,
 				---- disable `nowait` if you have existing combos starting with this char that you want to use
 			--},
+			["<Space>"] = false,
 			["l"] = function (state)
 				local node = state.tree:get_node()
 				if node.type == "directory" and not node:is_expanded() then
@@ -658,11 +660,17 @@ for _, lsp in pairs(servers) do
 	}
 end
 
-
 require('bufferline').setup {
 	options = {
-		offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-		mode = "tabs",
+		offsets = {
+			{
+				filetype = "neo-tree",
+				text = "File Explorer",
+				highlight = "Directory",
+				text_align = "center",
+			},
+		},
+		--mode = "tabs",
 		buffer_close_icon = '', --'',
 		modified_icon = '●',
 		show_close_icon = false,
@@ -682,3 +690,6 @@ require('bufferline').setup {
 
 	},
 }
+
+
+
