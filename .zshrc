@@ -83,7 +83,7 @@ fi
 
 ##options
 setopt  autocd autopushd pushdignoredups 
-
+KEYTIMEOUT=1
 
 ## some aliases
 alias ll='ls -alF'
@@ -107,6 +107,8 @@ alias 9='cd ~9'
 
 ##vi-mode
 bindkey -v
+bindkey -M vicmd "a" vi-add-next
+bindkey -M vicmd "A" vi-add-eol
 bindkey -M vicmd "e" vi-insert
 bindkey -M vicmd "E" vi-insert-bol
 bindkey -M vicmd "h" vi-forward-word-end
@@ -137,6 +139,4 @@ export PATH=~/.local/bin:"$PATH"
 #export ZEPHYR_BASE=~/Code/zephyrproject/zephyr
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source localconfig.zsh

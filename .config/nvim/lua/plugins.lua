@@ -651,7 +651,7 @@ end
 -- map buffer local keybindings when the language server attaches
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'sumneko_lua', 'vimls', 'clangd', 'bashls', 'cmake',
-	'prosemd_lsp', 'golangci_lint_ls' }
+	'prosemd_lsp', 'golangci_lint_ls', 'asm_lsp' }
 
 for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {
@@ -677,8 +677,8 @@ require('bufferline').setup {
 		left_trunc_marker = " ",
 		right_trunc_marker = " ",
 		max_name_length = 14,
-		max_prefix_length = 13,
-		tab_size = 16,
+		--max_prefix_length = 13,
+		tab_size = 6,
 		show_tab_indicators = true,
 		enforce_regular_tabs = false,
 		view = "multiwindow",

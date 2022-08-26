@@ -133,7 +133,7 @@ noremap <LEADER>v :Vista!!<CR>
 "============
 "NvimTreeToggle
 "============
-nnoremap <LEADER>t :Neotree toggle=true<CR>
+nnoremap <LEADER>t :Neotree reveal<CR>
 
 
 nnoremap <silent> <LEADER>h :call <SID>show_documentation()<CR>
