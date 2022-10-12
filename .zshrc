@@ -139,4 +139,4 @@ export PATH=~/.local/bin:"$PATH"
 #export ZEPHYR_BASE=~/Code/zephyrproject/zephyr
 
 
-source localconfig.zsh
+source ~/.localconfig.zsh
