@@ -8,6 +8,8 @@ colorscheme tokyonight
 "tabs/buffers
 "============
 nnoremap <silent><LEADER>n :tabe<CR>
+nnoremap <silent><LEADER>] :+tabnext<CR>
+nnoremap <silent><LEADER>[ :-tabnext<CR>
 nnoremap <silent><LEADER>= :BufferLineMoveNext<CR>
 nnoremap <silent><LEADER>- :BufferLineMovePrev<CR>
 nnoremap <silent><leader>1 <cmd>lua require("bufferline").go_to_buffer(1, true)<cr>
@@ -62,6 +64,17 @@ nnoremap <LEADER>t :Neotree reveal toggle<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
+
+"==========
+"nerdcommenter
+"=============
+"
+let g:NERDCreateDefaultMappings = 0
+vnoremap <C-_> :call nerdcommenter#Comment("x", "toggle")<CR>
+nnoremap <C-_> :call nerdcommenter#Comment(0, "toggle")<CR>
+
+
+
 
 
 

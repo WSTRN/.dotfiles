@@ -44,6 +44,7 @@ function(use)
 	use 'liuchengxu/vista.vim'
 	use 'lewis6991/gitsigns.nvim'
 	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+	use 'tiagovla/scope.nvim'
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
     	branch = "v2.x",
