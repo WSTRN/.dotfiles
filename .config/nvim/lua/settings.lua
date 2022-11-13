@@ -122,7 +122,8 @@ dashboard.section.buttons.val = {
 	dashboard.button( "SPC /", "  > Find file", ":Telescope find_files <CR>"),
 	dashboard.button( "SPC g", "  > Live grep", ":Telescope <CR>"),
 	dashboard.button( "r",     "  > Recent"   , ":Telescope oldfiles<CR>"),
-	dashboard.button( "s",     "  > Settings" , ":e $MYVIMRC | :cd %:p:h | :e ./lua/settings.lua | :Neotree<CR>"),
+	dashboard.button( "s",     "  > Settings" ,
+					  ":e $MYVIMRC | :cd %:p:h | :e ./lua/settings.lua | :Neotree<CR> | <C-w>l"),
 	dashboard.button( "q", 	   "  > Quit NVIM", ":qa<CR>"),
 }
 
@@ -134,7 +135,13 @@ vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 
 
 --toggleterm-----------------------------------------
-require("toggleterm").setup()
+require("toggleterm").setup{
+	open_mapping = [[<C-\>]],
+	direction = "float",
+	float_opts = {
+		border = "curved",
+	}
+}
 
 --feline-----------------------------------------
 local colors = {
@@ -815,7 +822,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set('n', 'gDD', vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+	vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 	vim.keymap.set('n', 'ge', vim.diagnostic.open_float, bufopts)
 	vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, bufopts)
 	vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, bufopts)
