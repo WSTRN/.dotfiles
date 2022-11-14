@@ -668,9 +668,74 @@ require('mason').setup({
 		}
 	}
 })
-require('mason-lspconfig').setup()
 
+local lspservers = {
+	'pyright',
+	'rust_analyzer',
+	'tsserver',
+	'sumneko_lua',
+	'vimls',
+	'clangd',
+	'bashls',
+	'cmake',
+	'prosemd_lsp',
+	'golangci_lint_ls',
+	'asm_lsp',
+}
 
+require('mason-lspconfig').setup({
+	ensure_installed = lspservers
+})
+
+-- lsp-config--------------------------------------------------------------------------
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+	-- Mappings.
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+	vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
+	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set('n', 'gDD', vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+	vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
+	vim.keymap.set('n', 'ge', vim.diagnostic.open_float, bufopts)
+	vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, bufopts)
+	vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, bufopts)
+	vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, bufopts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local lspconfig = require('lspconfig')
+for _, lsp in pairs(lspservers) do
+	lspconfig[lsp].setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+end
+lspconfig.sumneko_lua.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+			},
+			diagnostics = {
+				globals = { 'vim' }
+			},
+		}
+	}
+}
+
+----------------------------------------------------------------------------------------------------
 -- luasnip setup
 -- Setup nvim-cmp.
 local has_words_before = function()
@@ -765,13 +830,15 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	}),
-	sources = cmp.config.sources({
+	sources = cmp.config.sources(
+	{
 		{ name = 'nvim_lsp' },
 		--{ name = 'vsnip' }, -- For vsnip users.
 		{ name = 'luasnip' }, -- For luasnip users.
 		--{ name = 'ultisnips' }, -- For ultisnips users.
 		-- { name = 'snippy' }, -- For snippy users.
-	}, {
+	},
+	{
 		{ name = 'buffer' },
 	})
 })
@@ -800,62 +867,6 @@ cmp.setup.cmdline(':', {
 	})
 })
 
-
--- lsp-config--------------------------------------------------------------------------
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
---local opts = { noremap = true, silent = true }
---vim.keymap.set('n', 'ge', vim.diagnostic.open_float, opts)
---vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts)
---vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts)
---vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set('n', 'gDD', vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
-	vim.keymap.set('n', 'ge', vim.diagnostic.open_float, bufopts)
-	vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, bufopts)
-	vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, bufopts)
-	vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, bufopts)
-end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'sumneko_lua', 'vimls', 'clangd', 'bashls', 'cmake',
-	'prosemd_lsp', 'golangci_lint_ls', 'asm_lsp' }
-
---local lspconfig = require('lspconfig')
-for _, lsp in pairs(servers) do
-	require('lspconfig')[lsp].setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
-end
-require('lspconfig').sumneko_lua.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			runtime = {
-				version = 'LuaJIT',
-			},
-			diagnostics = {
-				globals = { 'vim' }
-			},
-		}
-	}
-}
 
 --bufferline----------------------------------------------------------------
 require('bufferline').setup {
