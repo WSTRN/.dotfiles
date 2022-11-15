@@ -680,7 +680,6 @@ local lspservers = {
 	'cmake',
 	'prosemd_lsp',
 	'golangci_lint_ls',
-	'asm_lsp',
 }
 
 require('mason-lspconfig').setup({
