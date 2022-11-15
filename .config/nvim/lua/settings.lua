@@ -439,10 +439,18 @@ require("neo-tree").setup({
 				end
 			end,
 			["j"] = "close_node",
-			["u"] = "prev_source",
-			["o"] = "next_source",
+			["o"] = function (state)
+				state.commands["open"](state)
+				vim.cmd("Neotree reveal")
+			end,
+
+			["u"] = { "toggle_preview", config = { use_float = true } },
 			["<cr>"] = "open",
-			["e"] = "open",
+			["e"] = function (state)
+				state.commands["open"](state)
+				vim.cmd("Neotree close")
+			end,
+
 			["<Tab>"] = function (state)
 				state.commands["open"](state)
 				vim.cmd("Neotree reveal")
