@@ -120,7 +120,7 @@ dashboard.section.header.opts.hl = pick_color()
 dashboard.section.buttons.val = {
 	dashboard.button( "e",     "  > New file" , ":ene <BAR> startinsert <CR>"),
 	dashboard.button( "SPC /", "  > Find file", ":Telescope find_files <CR>"),
-	dashboard.button( "SPC g", "  > Live grep", ":Telescope <CR>"),
+	dashboard.button( "SPC g", "  > Live grep", ":Telescope live_grep<CR>"),
 	dashboard.button( "r",     "  > Recent"   , ":Telescope oldfiles<CR>"),
 	dashboard.button( "s",     "  > Settings" ,
 					  ":e $MYVIMRC | :cd %:p:h | :e ./lua/settings.lua | :Neotree<CR> | <C-w>l"),
