@@ -35,8 +35,8 @@ nnoremap <LEADER>u :UndotreeToggle<CR>
 "============
 "fzf
 "============
-nnoremap <LEADER>/ :FZF<CR>
-"nnoremap <LEADER>/f <cmd>Telescope find_files<cr>
+"nnoremap <LEADER>/ :FZF<CR>
+nnoremap <LEADER>/f <cmd>Telescope find_files<cr>
 nnoremap <LEADER>g <cmd>Telescope live_grep<cr>
 nnoremap <LEADER>/b <cmd>Telescope buffers<cr>
 nnoremap <LEADER>/h <cmd>Telescope help_tags<cr>
