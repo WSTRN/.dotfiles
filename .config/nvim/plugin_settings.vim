@@ -10,8 +10,8 @@ colorscheme tokyonight
 nnoremap <silent><LEADER>n :tabe<CR>
 nnoremap <silent><LEADER>] :+tabnext<CR>
 nnoremap <silent><LEADER>[ :-tabnext<CR>
-nnoremap <silent><LEADER>= :BufferLineMoveNext<CR>
-nnoremap <silent><LEADER>- :BufferLineMovePrev<CR>
+nnoremap <silent><LEADER>= :BufferLineCycleNext<CR>
+nnoremap <silent><LEADER>- :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>1 <cmd>lua require("bufferline").go_to_buffer(1, true)<cr>
 nnoremap <silent><leader>2 <cmd>lua require("bufferline").go_to_buffer(2, true)<cr>
 nnoremap <silent><leader>3 <cmd>lua require("bufferline").go_to_buffer(3, true)<cr>
