@@ -676,13 +676,12 @@ local lspservers = {
 	'pyright',
 	'rust_analyzer',
 	'tsserver',
-	'sumneko_lua',
+	'lua_ls',
 	'vimls',
 	'clangd',
 	'bashls',
 	'cmake',
 	'prosemd_lsp',
-	'golangci_lint_ls',
 }
 
 require('mason-lspconfig').setup({
@@ -722,7 +721,7 @@ for _, lsp in pairs(lspservers) do
 		capabilities = capabilities,
 	}
 end
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
