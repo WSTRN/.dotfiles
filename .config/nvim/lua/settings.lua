@@ -136,7 +136,7 @@ vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 
 --toggleterm-----------------------------------------
 require("toggleterm").setup{
-	open_mapping = [[<C-\>]],
+	open_mapping = [[<S-Tab>]],
 	direction = "float",
 	float_opts = {
 		border = "curved",
