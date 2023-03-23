@@ -7,9 +7,9 @@ then
 		echo "setting git proxy"
 		host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
 		echo "host ip: $host_ip"
-		cmd_string="git config --global http.proxy 'socks5://$host_ip:10809';"
+		cmd_string="git config --global http.proxy $host_ip:10809"
 		$cmd_string
-		cmd_string="git config --global https.proxy 'socks5://$host_ip:10809'"
+		cmd_string="git config --global https.proxy $host_ip:10809"
 		$cmd_string
 		echo check:
 		git config --global --get http.proxy;git config --global --get https.proxy
