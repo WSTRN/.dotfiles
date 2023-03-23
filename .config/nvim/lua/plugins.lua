@@ -43,6 +43,12 @@ function(use)
 	-------------------------------------------
 	use 'liuchengxu/vista.vim'
 	use 'lewis6991/gitsigns.nvim'
+	use {
+		'simrat39/symbols-outline.nvim',
+		config = function()
+			require('symbols-outline').setup()
+		end
+	}
 	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 	use 'tiagovla/scope.nvim'
 	use {
@@ -76,6 +82,13 @@ function(use)
       		}
 		}
     }
+	use{
+		"petertriho/nvim-scrollbar",
+		config = function()
+			require("scrollbar").setup()
+		end
+	}
+
 
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/mason.nvim'
@@ -101,8 +114,21 @@ function(use)
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'rafamadriz/friendly-snippets'
 
-	use 'github/copilot.vim'
 	use 'babaybus/DoxygenToolkit.vim'
+	--use 'github/copilot.vim'
+	use { "zbirenbaum/copilot.lua",
+		config = function()
+    		require("copilot").setup({})
+  		end
+	}
+	use {
+  		"zbirenbaum/copilot-cmp",
+  		after = { "copilot.lua" },
+  		config = function ()
+    		require("copilot_cmp").setup()
+  		end
+	}
+
 
   	-- Automatically set up your configuration after cloning packer.nvim
   	-- Put this at the end after all plugins

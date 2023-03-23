@@ -1,4 +1,5 @@
 require('gitsigns').setup {}
+require("scrollbar.handlers.gitsigns").setup()
 
 --tokyonight----------------------------------------
 require("tokyonight").setup({
@@ -735,6 +736,12 @@ lspconfig.lua_ls.setup {
 		}
 	}
 }
+local clang_capabilities = capabilities
+clang_capabilities.offsetEncoding = { "utf-16" }
+lspconfig.clangd.setup {
+	on_attach = on_attach,
+	capabilities = clang_capabilities,
+}
 
 ----------------------------------------------------------------------------------------------------
 -- luasnip setup
@@ -759,8 +766,8 @@ cmp.setup({
 		end,
 	},
 	window = {
-		-- completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
+		 completion = cmp.config.window.bordered(),
+		 documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
 		--['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -833,11 +840,12 @@ cmp.setup({
 	}),
 	sources = cmp.config.sources(
 	{
-		{ name = 'nvim_lsp' },
+		{ name = 'nvim_lsp', group_index = 2 },
 		--{ name = 'vsnip' }, -- For vsnip users.
-		{ name = 'luasnip' }, -- For luasnip users.
+		{ name = 'luasnip', group_index = 2 }, -- For luasnip users.
 		--{ name = 'ultisnips' }, -- For ultisnips users.
 		-- { name = 'snippy' }, -- For snippy users.
+    	{ name = "copilot", group_index = 2 },
 	},
 	{
 		{ name = 'buffer' },
@@ -907,4 +915,8 @@ require('scope').setup()
 --vim.cmd [[imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")]]
 --vim.cmd [[let g:copilot_no_tab_map = v:true]]
 
+require('copilot').setup({
+	suggestion = { enabled = false },
+	panel = { enabled = false },
+})
 
