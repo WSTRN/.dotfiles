@@ -44,10 +44,9 @@ nnoremap <LEADER>/h <cmd>Telescope help_tags<cr>
 
 
 "============
-"vista
+"symbols outline
 "============
-noremap <LEADER>v :Vista!!<CR>
-"noremap <c-t> :silent! Vista finder coc<CR>
+noremap <LEADER>v :SymbolsOutline<CR>
 
 
 
@@ -58,12 +57,6 @@ nnoremap <LEADER>t :Neotree reveal toggle<CR>
 
 
 
-" ===
-" === Vista.vim
-" ===
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'ctags'
-let g:vista_fzf_preview = ['right:50%']
 
 "==========
 "nerdcommenter

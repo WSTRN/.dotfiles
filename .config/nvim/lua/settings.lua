@@ -1,12 +1,13 @@
 require('gitsigns').setup {}
 require("scrollbar.handlers.gitsigns").setup()
+require('scope').setup()
 
 --tokyonight----------------------------------------
 require("tokyonight").setup({
-  	-- use the night style
-  	style = "night",
+	-- use the night style
+	style = "night",
 	transparent = true,
-  	sidebars = { "qf", "vista_kind", "terminal", "packer" },
+	sidebars = { "qf", "vista_kind", "terminal", "packer" },
 })
 
 --alpha-------------------------------------------------
@@ -14,49 +15,49 @@ local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
 local cool = {
-  [[                                          ]],
-  [[    ███╗   ███╗ █████╗ ██╗  ██╗███████╗   ]],
-  [[    ████╗ ████║██╔══██╗██║ ██╔╝██╔════╝   ]],
-  [[    ██╔████╔██║███████║█████╔╝ █████╗     ]],
-  [[    ██║╚██╔╝██║██╔══██║██╔═██╗ ██╔══╝     ]],
-  [[    ██║ ╚═╝ ██║██║  ██║██║  ██╗███████╗   ]],
-  [[    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝   ]],
-  [[      ██████╗ ██████╗  ██████╗ ██╗        ]],
-  [[     ██╔════╝██╔═══██╗██╔═══██╗██║        ]],
-  [[     ██║     ██║   ██║██║   ██║██║        ]],
-  [[     ██║     ██║   ██║██║   ██║██║        ]],
-  [[     ╚██████╗╚██████╔╝╚██████╔╝███████╗   ]],
-  [[      ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝   ]],
-  [[███████╗████████╗██╗   ██╗███████╗███████╗]],
-  [[██╔════╝╚══██╔══╝██║   ██║██╔════╝██╔════╝]],
-  [[███████╗   ██║   ██║   ██║█████╗  █████╗  ]],
-  [[╚════██║   ██║   ██║   ██║██╔══╝  ██╔══╝  ]],
-  [[███████║   ██║   ╚██████╔╝██║     ██║     ]],
-  [[╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝     ]],
-  [[                                          ]],
+	[[                                          ]],
+	[[    ███╗   ███╗ █████╗ ██╗  ██╗███████╗   ]],
+	[[    ████╗ ████║██╔══██╗██║ ██╔╝██╔════╝   ]],
+	[[    ██╔████╔██║███████║█████╔╝ █████╗     ]],
+	[[    ██║╚██╔╝██║██╔══██║██╔═██╗ ██╔══╝     ]],
+	[[    ██║ ╚═╝ ██║██║  ██║██║  ██╗███████╗   ]],
+	[[    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝   ]],
+	[[      ██████╗ ██████╗  ██████╗ ██╗        ]],
+	[[     ██╔════╝██╔═══██╗██╔═══██╗██║        ]],
+	[[     ██║     ██║   ██║██║   ██║██║        ]],
+	[[     ██║     ██║   ██║██║   ██║██║        ]],
+	[[     ╚██████╗╚██████╔╝╚██████╔╝███████╗   ]],
+	[[      ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝   ]],
+	[[███████╗████████╗██╗   ██╗███████╗███████╗]],
+	[[██╔════╝╚══██╔══╝██║   ██║██╔════╝██╔════╝]],
+	[[███████╗   ██║   ██║   ██║█████╗  █████╗  ]],
+	[[╚════██║   ██║   ██║   ██║██╔══╝  ██╔══╝  ]],
+	[[███████║   ██║   ╚██████╔╝██║     ██║     ]],
+	[[╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝     ]],
+	[[                                          ]],
 }
 
 local robust = {
-  [[                                                    ]],
-  [[        ██████╗ ██╗   ██╗██╗██╗     ██████╗         ]],
-  [[        ██╔══██╗██║   ██║██║██║     ██╔══██╗        ]],
-  [[        ██████╔╝██║   ██║██║██║     ██║  ██║        ]],
-  [[        ██╔══██╗██║   ██║██║██║     ██║  ██║        ]],
-  [[        ██████╔╝╚██████╔╝██║███████╗██████╔╝        ]],
-  [[        ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚═════╝         ]],
-  [[ ██████╗  ██████╗ ██████╗ ██╗   ██╗███████╗████████╗]],
-  [[ ██╔══██╗██╔═══██╗██╔══██╗██║   ██║██╔════╝╚══██╔══╝]],
-  [[ ██████╔╝██║   ██║██████╔╝██║   ██║███████╗   ██║   ]],
-  [[ ██╔══██╗██║   ██║██╔══██╗██║   ██║╚════██║   ██║   ]],
-  [[ ██║  ██║╚██████╔╝██████╔╝╚██████╔╝███████║   ██║   ]],
-  [[ ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝   ╚═╝   ]],
-  [[     ███████╗████████╗██╗   ██╗███████╗███████╗     ]],
-  [[     ██╔════╝╚══██╔══╝██║   ██║██╔════╝██╔════╝     ]],
-  [[     ███████╗   ██║   ██║   ██║█████╗  █████╗       ]],
-  [[     ╚════██║   ██║   ██║   ██║██╔══╝  ██╔══╝       ]],
-  [[     ███████║   ██║   ╚██████╔╝██║     ██║          ]],
-  [[     ╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝          ]],
-  [[                                                    ]],
+	[[                                                    ]],
+	[[        ██████╗ ██╗   ██╗██╗██╗     ██████╗         ]],
+	[[        ██╔══██╗██║   ██║██║██║     ██╔══██╗        ]],
+	[[        ██████╔╝██║   ██║██║██║     ██║  ██║        ]],
+	[[        ██╔══██╗██║   ██║██║██║     ██║  ██║        ]],
+	[[        ██████╔╝╚██████╔╝██║███████╗██████╔╝        ]],
+	[[        ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚═════╝         ]],
+	[[ ██████╗  ██████╗ ██████╗ ██╗   ██╗███████╗████████╗]],
+	[[ ██╔══██╗██╔═══██╗██╔══██╗██║   ██║██╔════╝╚══██╔══╝]],
+	[[ ██████╔╝██║   ██║██████╔╝██║   ██║███████╗   ██║   ]],
+	[[ ██╔══██╗██║   ██║██╔══██╗██║   ██║╚════██║   ██║   ]],
+	[[ ██║  ██║╚██████╔╝██████╔╝╚██████╔╝███████║   ██║   ]],
+	[[ ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝   ╚═╝   ]],
+	[[     ███████╗████████╗██╗   ██╗███████╗███████╗     ]],
+	[[     ██╔════╝╚══██╔══╝██║   ██║██╔════╝██╔════╝     ]],
+	[[     ███████╗   ██║   ██║   ██║█████╗  █████╗       ]],
+	[[     ╚════██║   ██║   ██║   ██║██╔══╝  ██╔══╝       ]],
+	[[     ███████║   ██║   ╚██████╔╝██║     ██║          ]],
+	[[     ╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝          ]],
+	[[                                                    ]],
 }
 
 local logo = {
@@ -104,14 +105,14 @@ local uwuboy = {
 	[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡎⣮⣾⡿⣟⣯⢗⢍⢮⣟⣿⣺⢿⣟⣿⣟⣿⣽⣾⣿⣿⣻⣷⣿⣿⣯⣿⣿⣻⣿⣻⣿⣟⣯⣯⡳⣕⢿⣿⣽⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
 	[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⢜⢾⢷⡿⣿⢯⢃⠣⢵⣿⢯⣺⡻⡯⡿⡽⣿⣿⣿⣿⢿⣿⣿⢿⣯⣿⣿⢿⣿⣻⣿⣯⣿⣿⢺⣚⢮⡫⣿⣯⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
 }
-local headers = {cool, robust, logo, uwuboy}
+local headers = { cool, robust, logo, uwuboy }
 
 local function header_chars()
-  math.randomseed(os.time())
-  return headers[math.random(#headers)]
+	math.randomseed(os.time())
+	return headers[math.random(#headers)]
 end
 local function pick_color()
-	local colors = {"String", "Identifier", "Number"}
+	local colors = { "String", "Identifier", "Number" }
 	return colors[math.random(#colors)]
 end
 dashboard.section.header.val = header_chars()
@@ -119,13 +120,13 @@ dashboard.section.header.opts.hl = pick_color()
 
 -- Set menu
 dashboard.section.buttons.val = {
-	dashboard.button( "e",     "  > New file" , ":ene <BAR> startinsert <CR>"),
-	dashboard.button( "SPC /", "  > Find file", ":Telescope find_files <CR>"),
-	dashboard.button( "SPC g", "  > Live grep", ":Telescope live_grep<CR>"),
-	dashboard.button( "r",     "  > Recent"   , ":Telescope oldfiles<CR>"),
-	dashboard.button( "s",     "  > Settings" ,
-					  ":e $MYVIMRC | :cd %:p:h | :e ./lua/settings.lua | :Neotree<CR> | <C-w>l"),
-	dashboard.button( "q", 	   "  > Quit NVIM", ":qa<CR>"),
+	dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
+	dashboard.button("SPC /", "  > Find file", ":Telescope find_files <CR>"),
+	dashboard.button("SPC g", "  > Live grep", ":Telescope live_grep<CR>"),
+	dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
+	dashboard.button("s", "  > Settings",
+		":e $MYVIMRC | :cd %:p:h | :e ./lua/plugins.lua | :e ./lua/settings.lua | :Neotree<CR> | <C-w>l"),
+	dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 }
 
 -- Send config to alpha
@@ -136,7 +137,7 @@ vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 
 
 --toggleterm-----------------------------------------
-require("toggleterm").setup{
+require("toggleterm").setup {
 	open_mapping = [[<S-Tab>]],
 	direction = "float",
 	float_opts = {
@@ -165,7 +166,7 @@ local vi_mode_colors = {
 	OP = colors.green,
 	BLOCK = colors.blue,
 	REPLACE = colors.violet,
-	['V-REPLACE'] = colors.violet,
+		['V-REPLACE'] = colors.violet,
 	ENTER = colors.cyan,
 	MORE = colors.cyan,
 	SELECT = colors.orange,
@@ -359,7 +360,7 @@ table.insert(components.active[3], comps.file.position)
 table.insert(components.active[3], comps.line_percentage)
 table.insert(components.active[3], comps.scroll_bar)
 table.insert(components.active[3], comps.vi_mode.right)
-require 'feline'.setup {
+require("feline").setup {
 	colors = { bg = colors.bg, fg = colors.fg },
 	components = components,
 	vi_mode_colors = vi_mode_colors,
@@ -379,7 +380,7 @@ require 'feline'.setup {
 
 --neo-tree----------------------------------------------------------------------------
 require("neo-tree").setup({
-	close_if_last_window = true,-- Close Neo-tree if it is the last window left in the tab
+	close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 	popup_border_style = "rounded",
 	source_selector = {
 		statusline = true,
@@ -428,53 +429,51 @@ require("neo-tree").setup({
 		},
 		mappings = {
 			--["<Space>"] = {
-				--"toggle_node",
-				--nowait = true,
-				---- disable `nowait` if you have existing combos starting with this char that you want to use
+			--"toggle_node",
+			--nowait = true,
+			---- disable `nowait` if you have existing combos starting with this char that you want to use
 			--},
-			["<Space>"] = false,
-			["l"] = function (state)
+				["<Space>"] = false,
+				["l"] = function(state)
 				local node = state.tree:get_node()
 				if node.type == "directory" and not node:is_expanded() then
 					state.commands["toggle_node"](state)
 				end
 			end,
-			["j"] = "close_node",
-			["o"] = function (state)
+				["j"] = "close_node",
+				["o"] = function(state)
 				state.commands["open"](state)
 				vim.cmd("Neotree reveal")
 			end,
-
-			["<Tab>"] = { "toggle_preview", config = { use_float = true } },
-			["<cr>"] = "open",
-			["e"] = function (state)
+				["<Tab>"] = { "toggle_preview", config = { use_float = true } },
+				["<cr>"] = "open",
+				["e"] = function(state)
 				state.commands["open"](state)
 				vim.cmd("Neotree close")
 			end,
-
-			["sh"] = "open_split",
-			["sv"] = "open_vsplit",
+				["sh"] = "open_split",
+				["sv"] = "open_vsplit",
 			-- ["S"] = "split_with_window_picker",
 			-- ["s"] = "vsplit_with_window_picker",
-			["t"] = "open_tabnew",
-			["w"] = "open_with_window_picker",
-			["C"] = "close_node",
-			["z"] = "close_all_nodes",
+				["t"] = "open_tabnew",
+				["w"] = "open_with_window_picker",
+				["C"] = "close_node",
+				["z"] = "close_all_nodes",
 			--["Z"] = "expand_all_nodes",
-			["a"] = {
+				["a"] = {
 				"add",
 				-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 				config = {
 					show_path = "none", -- "none", "relative", "absolute"
 				}
 			},
-			["A"] = "add_directory", -- also accepts the optional config.show_path option like "add".
-			["d"] = "delete",
-			["r"] = "rename",
-			["y"] = "copy_to_clipboard",
-			["x"] = "cut_to_clipboard",
-			["p"] = "paste_from_clipboard",
-			["c"] = "copy",
+				["A"] = "add_directory", -- also accepts the optional config.show_path option like "add".
+				["d"] = "delete",
+				["r"] = "rename",
+				["y"] = "copy_to_clipboard",
+				["x"] = "cut_to_clipboard",
+				["p"] = "paste_from_clipboard",
+				["c"] = "copy",
 			-- takes text input for destination, also accepts the optional config.show_path option like "add":
 			-- ["c"] = {
 			--  "copy",
@@ -482,10 +481,10 @@ require("neo-tree").setup({
 			--    show_path = "none" -- "none", "relative", "absolute"
 			--  }
 			--}
-			["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
-			["q"] = "close_window",
-			["R"] = "refresh",
-			["?"] = "show_help",
+				["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+				["q"] = "close_window",
+				["R"] = "refresh",
+				["?"] = "show_help",
 		}
 	},
 	nesting_rules = {},
@@ -495,15 +494,15 @@ require("neo-tree").setup({
 		-- instead of relying on nvim autocmd events.
 		window = {
 			mappings = {
-				["<bs>"] = "navigate_up",
-				["."] = "set_root",
-				["H"] = "toggle_hidden",
-				["/"] = "fuzzy_finder",
-				["D"] = "fuzzy_finder_directory",
-				["f"] = "filter_on_submit",
-				["<c-x>"] = "clear_filter",
-				["[g"] = "prev_git_modified",
-				["]g"] = "next_git_modified",
+					["<bs>"] = "navigate_up",
+					["."] = "set_root",
+					["H"] = "toggle_hidden",
+					["/"] = "fuzzy_finder",
+					["D"] = "fuzzy_finder_directory",
+					["f"] = "filter_on_submit",
+					["<c-x>"] = "clear_filter",
+					["[g"] = "prev_git_modified",
+					["]g"] = "next_git_modified",
 			}
 		}
 	},
@@ -514,9 +513,9 @@ require("neo-tree").setup({
 		show_unloaded = true,
 		window = {
 			mappings = {
-				["d"] = "buffer_delete",
-				["<bs>"] = "navigate_up",
-				["."] = "set_root",
+					["d"] = "buffer_delete",
+					["<bs>"] = "navigate_up",
+					["."] = "set_root",
 			}
 		},
 	},
@@ -524,13 +523,13 @@ require("neo-tree").setup({
 		window = {
 			--position = "float",
 			mappings = {
-				["A"]  = "git_add_all",
-				["gu"] = "git_unstage_file",
-				["ga"] = "git_add_file",
-				["gr"] = "git_revert_file",
-				["gc"] = "git_commit",
-				["gp"] = "git_push",
-				["gg"] = "git_commit_and_push",
+					["A"] = "git_add_all",
+					["gu"] = "git_unstage_file",
+					["ga"] = "git_add_file",
+					["gr"] = "git_revert_file",
+					["gc"] = "git_commit",
+					["gp"] = "git_push",
+					["gg"] = "git_commit_and_push",
 			}
 		}
 	}
@@ -546,26 +545,26 @@ require('telescope').setup {
 				-- map actions.which_key to <C-h> (default: <C-/>)
 				-- actions.which_key shows the mappings for your picker,
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-				["<C-h>"] = "select_horizontal",
-				["<C-v>"] = "select_vertical",
+					["<C-h>"] = "select_horizontal",
+					["<C-v>"] = "select_vertical",
 			},
 			n = {
-				["k"] = "move_selection_next",
-				["i"] = "move_selection_previous",
-				["<C-h>"] = "select_horizontal",
-				["<C-v>"] = "select_vertical",
-				["j"] = false
+					["k"] = "move_selection_next",
+					["i"] = "move_selection_previous",
+					["<C-h>"] = "select_horizontal",
+					["<C-v>"] = "select_vertical",
+					["j"] = false
 			},
 		},
 	},
 	pickers = {
-		 --Default configuration for builtin pickers goes here:
-		 --picker_name = {
-		   --picker_config_key = value,
-		   --...
-		 --}
-		 --Now the picker_config_key will be applied every time you call this
-		 --builtin picker
+		--Default configuration for builtin pickers goes here:
+		--picker_name = {
+		--picker_config_key = value,
+		--...
+		--}
+		--Now the picker_config_key will be applied every time you call this
+		--builtin picker
 		live_grep = {
 			layout_strategy = "horizontal",
 			layout_config = {
@@ -633,40 +632,14 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.wo.foldlevel = 99
 
---require("nvim-lsp-installer").setup {
-	--automatic_installation = true,
-	--ui = {
-		--icons = {
-			--server_installed = "✓",
-			--server_pending = "➜",
-			--server_uninstalled = "✗"
-		--},
-		--keymaps = {
-			---- Keymap to expand a server in the UI
-			--toggle_server_expand = "<CR>",
-			---- Keymap to install the server under the current cursor position
-			--install_server = "e",
-			---- Keymap to reinstall/update the server under the current cursor position
-			--update_server = "u",
-			---- Keymap to check for new version for the server under the current cursor position
-			--check_server_version = "c",
-			---- Keymap to update all installed servers
-			--update_all_servers = "U",
-			---- Keymap to check which installed servers are outdated
-			--check_outdated_servers = "C",
-			---- Keymap to uninstall a server
-			--uninstall_server = "X",
-		--},
-	--}
---}
 --mason--------------------------------------------------------------------------------------------
 require('mason').setup({
 	ui = {
 		icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗",
-        },
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
 		keymaps = {
 			install_package = "e",
 		}
@@ -689,7 +662,10 @@ require('mason-lspconfig').setup({
 	ensure_installed = lspservers
 })
 
+--
 -- lsp-config--------------------------------------------------------------------------
+--
+--
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -743,9 +719,12 @@ lspconfig.clangd.setup {
 	capabilities = clang_capabilities,
 }
 
+--
+--
 ----------------------------------------------------------------------------------------------------
 -- luasnip setup
 -- Setup nvim-cmp.
+--
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -766,15 +745,15 @@ cmp.setup({
 		end,
 	},
 	window = {
-		 completion = cmp.config.window.bordered(),
-		 documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
 		--['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		--['<C-d>'] = cmp.mapping.scroll_docs(4),
 		--['<CR>'] = cmp.mapping.confirm {
-			--behavior = cmp.ConfirmBehavior.Replace,
-			--select = true,
+		--behavior = cmp.ConfirmBehavior.Replace,
+		--select = true,
 		--},
 
 		--testing??????
@@ -791,20 +770,20 @@ cmp.setup({
 		--end, { "i", "s" }),
 		--
 		--["<Tab>"] = cmp.mapping(function(fallback)
-			--if cmp.visible() then
-				--cmp.select_next_item()
-			--elseif luasnip.expand_or_jumpable() then
-				--luasnip.expand_or_jump()
-			--elseif has_words_before() then
-				--cmp.complete()
-			--else
-				--fallback()
-			--end
+		--if cmp.visible() then
+		--cmp.select_next_item()
+		--elseif luasnip.expand_or_jumpable() then
+		--luasnip.expand_or_jump()
+		--elseif has_words_before() then
+		--cmp.complete()
+		--else
+		--fallback()
+		--end
 		--end, { "i", "s" }),
 		--
-		['<C-u>'] = cmp.mapping.select_prev_item(),
-		['<C-d>'] = cmp.mapping.select_next_item(),
-		["<C-Space>"] = cmp.mapping(function(fallback)
+			['<C-u>'] = cmp.mapping.select_prev_item(),
+			['<C-d>'] = cmp.mapping.select_next_item(),
+			["<C-Space>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.abort()
 			elseif has_words_before() then
@@ -813,11 +792,10 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, {"i", "s"}),
-
-		["<Tab>"] = cmp.mapping(function(fallback)
+		end, { "i", "s" }),
+			["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.confirm{
+				cmp.confirm {
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				}
@@ -827,8 +805,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-
-		["<S-Tab>"] = cmp.mapping(function(fallback)
+			["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.jumpable(-1) then
@@ -839,17 +816,17 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = cmp.config.sources(
-	{
-		{ name = 'nvim_lsp', group_index = 2 },
-		--{ name = 'vsnip' }, -- For vsnip users.
-		{ name = 'luasnip', group_index = 2 }, -- For luasnip users.
-		--{ name = 'ultisnips' }, -- For ultisnips users.
-		-- { name = 'snippy' }, -- For snippy users.
-    	{ name = "copilot", group_index = 2 },
-	},
-	{
-		{ name = 'buffer' },
-	})
+		{
+			{ name = 'nvim_lsp', group_index = 2 },
+			--{ name = 'vsnip' }, -- For vsnip users.
+			{ name = 'luasnip',  group_index = 2 }, -- For luasnip users.
+			--{ name = 'ultisnips' }, -- For ultisnips users.
+			-- { name = 'snippy' }, -- For snippy users.
+			{ name = "copilot",  group_index = 2 },
+		},
+		{
+			{ name = 'buffer' },
+		})
 })
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
@@ -905,10 +882,8 @@ require('bufferline').setup {
 		always_show_bufferline = true,
 		diagnostics = false,
 		themable = true,
-
 	},
 }
-require('scope').setup()
 
 --copilot---------------------------------------------------------------------------
 --vim.keymap.set('i', '<C-J>', 'copilot#Accept()')
@@ -919,4 +894,75 @@ require('copilot').setup({
 	suggestion = { enabled = false },
 	panel = { enabled = false },
 })
+
+--
+--
+--symbolsOutline-----------------------------------------------------------------------
+--
+require('symbols-outline').setup({
+	highlight_hovered_item = true,
+	show_guides = true,
+	auto_preview = false,
+	position = 'right',
+	relative_width = true,
+	width = 28,
+	auto_close = false,
+	show_numbers = false,
+	show_relative_numbers = false,
+	show_symbol_details = true,
+	preview_bg_highlight = 'Pmenu',
+	autofold_depth = nil,
+	auto_unfold_hover = true,
+	fold_markers = { '', '' },
+	wrap = false,
+	keymaps = {
+	          -- These keymaps can be a string or a table for multiple keys
+		close = { "<Esc>", "q" },
+		goto_location = "<Cr>",
+		focus_location = "o",
+		hover_symbol = "<C-space>",
+		toggle_preview = "<Tab>",
+		rename_symbol = "r",
+		code_actions = "a",
+		fold = "j",
+		unfold = "l",
+		fold_all = "W",
+		unfold_all = "E",
+		fold_reset = "R",
+	},
+	lsp_blacklist = {},
+	symbol_blacklist = {},
+	symbols = {
+		File = { icon = "", hl = "@text.uri" },
+		Module = { icon = "", hl = "@namespace" },
+		Namespace = { icon = "", hl = "@namespace" },
+		Package = { icon = "", hl = "@namespace" },
+		Class = { icon = "𝓒", hl = "@type" },
+		Method = { icon = "ƒ", hl = "@method" },
+		Property = { icon = "", hl = "@method" },
+		Field = { icon = "", hl = "@field" },
+		Constructor = { icon = "", hl = "@constructor" },
+		Enum = { icon = "ℰ", hl = "@type" },
+		Interface = { icon = "ﰮ", hl = "@type" },
+		Function = { icon = "", hl = "@function" },
+		Variable = { icon = "", hl = "@constant" },
+		Constant = { icon = "", hl = "@constant" },
+		String = { icon = "𝓐", hl = "@string" },
+		Number = { icon = "#", hl = "@number" },
+		Boolean = { icon = "⊨", hl = "@boolean" },
+		Array = { icon = "", hl = "@constant" },
+		Object = { icon = "⦿", hl = "@type" },
+		Key = { icon = "🔐", hl = "@type" },
+		Null = { icon = "NULL", hl = "@type" },
+		EnumMember = { icon = "", hl = "@field" },
+		Struct = { icon = "𝓢", hl = "@type" },
+		Event = { icon = "🗲", hl = "@type" },
+		Operator = { icon = "+", hl = "@operator" },
+		TypeParameter = { icon = "𝙏", hl = "@parameter" },
+		Component = { icon = "", hl = "@function" },
+		Fragment = { icon = "", hl = "@constant" },
+	},
+})
+
+
 
