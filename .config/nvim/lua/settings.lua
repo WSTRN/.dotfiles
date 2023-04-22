@@ -9,6 +9,14 @@ require("tokyonight").setup({
 	transparent = true,
 	sidebars = { "qf", "vista_kind", "terminal", "packer" },
 })
+--nvim-web-devicons----------------------------------------
+require("nvim-web-devicons").set_icon {
+	dockerfile = {
+		icon = "",
+		color = "#99CCFF",
+		name = "Dockerfile"
+	}
+}
 
 --alpha-------------------------------------------------
 local alpha = require("alpha")
@@ -111,10 +119,12 @@ local function header_chars()
 	math.randomseed(os.time())
 	return headers[math.random(#headers)]
 end
+
 local function pick_color()
 	local colors = { "String", "Identifier", "Number" }
 	return colors[math.random(#colors)]
 end
+
 dashboard.section.header.val = header_chars()
 dashboard.section.header.opts.hl = pick_color()
 
@@ -166,7 +176,7 @@ local vi_mode_colors = {
 	OP = colors.green,
 	BLOCK = colors.blue,
 	REPLACE = colors.violet,
-		['V-REPLACE'] = colors.violet,
+	['V-REPLACE'] = colors.violet,
 	ENTER = colors.cyan,
 	MORE = colors.cyan,
 	SELECT = colors.orange,
@@ -433,47 +443,47 @@ require("neo-tree").setup({
 			--nowait = true,
 			---- disable `nowait` if you have existing combos starting with this char that you want to use
 			--},
-				["<Space>"] = false,
-				["l"] = function(state)
+			["<Space>"] = false,
+			["l"] = function(state)
 				local node = state.tree:get_node()
 				if node.type == "directory" and not node:is_expanded() then
 					state.commands["toggle_node"](state)
 				end
 			end,
-				["j"] = "close_node",
-				["o"] = function(state)
+			["j"] = "close_node",
+			["o"] = function(state)
 				state.commands["open"](state)
 				vim.cmd("Neotree reveal")
 			end,
-				["<Tab>"] = { "toggle_preview", config = { use_float = true } },
-				["<cr>"] = "open",
-				["e"] = function(state)
+			["<Tab>"] = { "toggle_preview", config = { use_float = true } },
+			["<cr>"] = "open",
+			["e"] = function(state)
 				state.commands["open"](state)
 				vim.cmd("Neotree close")
 			end,
-				["sh"] = "open_split",
-				["sv"] = "open_vsplit",
+			["sh"] = "open_split",
+			["sv"] = "open_vsplit",
 			-- ["S"] = "split_with_window_picker",
 			-- ["s"] = "vsplit_with_window_picker",
-				["t"] = "open_tabnew",
-				["w"] = "open_with_window_picker",
-				["C"] = "close_node",
-				["z"] = "close_all_nodes",
+			["t"] = "open_tabnew",
+			["w"] = "open_with_window_picker",
+			["C"] = "close_node",
+			["z"] = "close_all_nodes",
 			--["Z"] = "expand_all_nodes",
-				["a"] = {
+			["a"] = {
 				"add",
 				-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 				config = {
 					show_path = "none", -- "none", "relative", "absolute"
 				}
 			},
-				["A"] = "add_directory", -- also accepts the optional config.show_path option like "add".
-				["d"] = "delete",
-				["r"] = "rename",
-				["y"] = "copy_to_clipboard",
-				["x"] = "cut_to_clipboard",
-				["p"] = "paste_from_clipboard",
-				["c"] = "copy",
+			["A"] = "add_directory", -- also accepts the optional config.show_path option like "add".
+			["d"] = "delete",
+			["r"] = "rename",
+			["y"] = "copy_to_clipboard",
+			["x"] = "cut_to_clipboard",
+			["p"] = "paste_from_clipboard",
+			["c"] = "copy",
 			-- takes text input for destination, also accepts the optional config.show_path option like "add":
 			-- ["c"] = {
 			--  "copy",
@@ -481,10 +491,10 @@ require("neo-tree").setup({
 			--    show_path = "none" -- "none", "relative", "absolute"
 			--  }
 			--}
-				["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
-				["q"] = "close_window",
-				["R"] = "refresh",
-				["?"] = "show_help",
+			["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+			["q"] = "close_window",
+			["R"] = "refresh",
+			["?"] = "show_help",
 		}
 	},
 	nesting_rules = {},
@@ -494,15 +504,15 @@ require("neo-tree").setup({
 		-- instead of relying on nvim autocmd events.
 		window = {
 			mappings = {
-					["<bs>"] = "navigate_up",
-					["."] = "set_root",
-					["H"] = "toggle_hidden",
-					["/"] = "fuzzy_finder",
-					["D"] = "fuzzy_finder_directory",
-					["f"] = "filter_on_submit",
-					["<c-x>"] = "clear_filter",
-					["[g"] = "prev_git_modified",
-					["]g"] = "next_git_modified",
+				["<bs>"] = "navigate_up",
+				["."] = "set_root",
+				["H"] = "toggle_hidden",
+				["/"] = "fuzzy_finder",
+				["D"] = "fuzzy_finder_directory",
+				["f"] = "filter_on_submit",
+				["<c-x>"] = "clear_filter",
+				["[g"] = "prev_git_modified",
+				["]g"] = "next_git_modified",
 			}
 		}
 	},
@@ -513,9 +523,9 @@ require("neo-tree").setup({
 		show_unloaded = true,
 		window = {
 			mappings = {
-					["d"] = "buffer_delete",
-					["<bs>"] = "navigate_up",
-					["."] = "set_root",
+				["d"] = "buffer_delete",
+				["<bs>"] = "navigate_up",
+				["."] = "set_root",
 			}
 		},
 	},
@@ -523,13 +533,13 @@ require("neo-tree").setup({
 		window = {
 			--position = "float",
 			mappings = {
-					["A"] = "git_add_all",
-					["gu"] = "git_unstage_file",
-					["ga"] = "git_add_file",
-					["gr"] = "git_revert_file",
-					["gc"] = "git_commit",
-					["gp"] = "git_push",
-					["gg"] = "git_commit_and_push",
+				["A"] = "git_add_all",
+				["gu"] = "git_unstage_file",
+				["ga"] = "git_add_file",
+				["gr"] = "git_revert_file",
+				["gc"] = "git_commit",
+				["gp"] = "git_push",
+				["gg"] = "git_commit_and_push",
 			}
 		}
 	}
@@ -545,15 +555,15 @@ require('telescope').setup {
 				-- map actions.which_key to <C-h> (default: <C-/>)
 				-- actions.which_key shows the mappings for your picker,
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-					["<C-h>"] = "select_horizontal",
-					["<C-v>"] = "select_vertical",
+				["<C-h>"] = "select_horizontal",
+				["<C-v>"] = "select_vertical",
 			},
 			n = {
-					["k"] = "move_selection_next",
-					["i"] = "move_selection_previous",
-					["<C-h>"] = "select_horizontal",
-					["<C-v>"] = "select_vertical",
-					["j"] = false
+				["k"] = "move_selection_next",
+				["i"] = "move_selection_previous",
+				["<C-h>"] = "select_horizontal",
+				["<C-v>"] = "select_vertical",
+				["j"] = false
 			},
 		},
 	},
@@ -781,9 +791,9 @@ cmp.setup({
 		--end
 		--end, { "i", "s" }),
 		--
-			['<C-u>'] = cmp.mapping.select_prev_item(),
-			['<C-d>'] = cmp.mapping.select_next_item(),
-			["<C-Space>"] = cmp.mapping(function(fallback)
+		['<C-u>'] = cmp.mapping.select_prev_item(),
+		['<C-d>'] = cmp.mapping.select_next_item(),
+		["<C-Space>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.abort()
 			elseif has_words_before() then
@@ -793,7 +803,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-			["<Tab>"] = cmp.mapping(function(fallback)
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.confirm {
 					behavior = cmp.ConfirmBehavior.Replace,
@@ -805,7 +815,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-			["<S-Tab>"] = cmp.mapping(function(fallback)
+		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.jumpable(-1) then
@@ -819,10 +829,10 @@ cmp.setup({
 		{
 			{ name = 'nvim_lsp', group_index = 2 },
 			--{ name = 'vsnip' }, -- For vsnip users.
-			{ name = 'luasnip',  group_index = 2 }, -- For luasnip users.
+			{ name = 'luasnip', group_index = 2 }, -- For luasnip users.
 			--{ name = 'ultisnips' }, -- For ultisnips users.
 			-- { name = 'snippy' }, -- For snippy users.
-			{ name = "copilot",  group_index = 2 },
+			{ name = "copilot", group_index = 2 },
 		},
 		{
 			{ name = 'buffer' },
@@ -916,7 +926,7 @@ require('symbols-outline').setup({
 	fold_markers = { '', '' },
 	wrap = false,
 	keymaps = {
-	          -- These keymaps can be a string or a table for multiple keys
+		-- These keymaps can be a string or a table for multiple keys
 		close = { "<Esc>", "q" },
 		goto_location = "<Cr>",
 		focus_location = "o",
@@ -963,6 +973,3 @@ require('symbols-outline').setup({
 		Fragment = { icon = "", hl = "@constant" },
 	},
 })
-
-
-
