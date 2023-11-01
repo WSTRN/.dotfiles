@@ -71,7 +71,10 @@ noremap <C-left> :vertical resize-5<CR>
 noremap <C-right> :vertical resize+5<CR>
 noremap <C-up> :res +5<CR>
 noremap <C-down> :res -5<CR>
-
+inoremap <C-i> <up>
+inoremap <C-k> <down>
+inoremap <C-j> <left>
+inoremap <C-l> <right>
 "======================
 "find help
 "======================

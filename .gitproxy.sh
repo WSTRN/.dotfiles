@@ -5,7 +5,8 @@ then
 	if [ "$1" == "set" ]
 	then
 		echo "setting git proxy"
-		host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
+		host_ip=127.0.0.1
+		#host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
 		echo "host ip: $host_ip"
 		cmd_string="git config --global http.proxy $host_ip:10809"
 		$cmd_string

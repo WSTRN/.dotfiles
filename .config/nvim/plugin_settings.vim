@@ -65,12 +65,11 @@ nnoremap <LEADER>t :Neotree reveal toggle<CR>
 let g:NERDCreateDefaultMappings = 0
 vnoremap <C-_> :call nerdcommenter#Comment("x", "toggle")<CR>
 nnoremap <C-_> :call nerdcommenter#Comment(0, "toggle")<CR>
+inoremap <C-_> <cmd> call nerdcommenter#Comment(0, "toggle")<CR>
 
-
-
-
-
-
+vnoremap <C-c> :call nerdcommenter#Comment("x", "toggle")<CR>
+nnoremap <C-c> :call nerdcommenter#Comment(0, "toggle")<CR>
+inoremap <C-c> <cmd> call nerdcommenter#Comment(0, "toggle")<CR>
 
 
 
