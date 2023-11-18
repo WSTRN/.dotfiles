@@ -30,19 +30,16 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 #
-#####my config#####
+#####my configuration#####
 #
 zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 zinit ice lucid wait='1'
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-zinit snippet OMZ::lib/history.zsh
-#zinit ice lucid wait='0'
-#zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh
-#zinit snippet OMZ::lib/key-bindings.zsh
+#zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice lucid wait='0'
 zinit light zsh-users/zsh-completions
-#zinit snippet OMZ::lib/completion.zsh
+zinit light zsh-users/zsh-syntax-highlighting
+#zinit light zdharma-continuum/fast-syntax-highlighting
 : ${THEME:=p10k}
 
 case $THEME in
@@ -62,9 +59,6 @@ esac
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -76,9 +70,6 @@ if [ -x /usr/bin/dircolors ]; then
 	alias fgrep='fgrep --color=auto'
 	alias egrep='egrep --color=auto'
 fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 
 ##options
@@ -127,16 +118,14 @@ bindkey -M vicmd "j" vi-backward-char
 #zle -N zle-keymap-select
 ###############################
 # Use beam shape cursor on startup.
-echo -ne '\e[1 q'
-echo -ne "\033]12;#ffb86c\007"
+#echo -ne '\e[1 q'
+#echo -ne "\033]12;#ffb86c\007"
 
 
 ##export
 export EDITOR=nvim
 export TERM="tmux-256color"
 export PATH=~/.local/bin:"$PATH"
-#export PATH=~/Code/zephyrproject/zephyr:"$PATH"
-#export ZEPHYR_BASE=~/Code/zephyrproject/zephyr
 
 
 source ~/.localconfig.zsh
