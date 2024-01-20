@@ -40,9 +40,9 @@ then
 		git config --global --get http.proxy;git config --global --get https.proxy
 		exit 0
 
-	elif [ "$1" == "clear" ]
+	elif [ "$1" == "clean" ]
 	then
-		echo "clearing git proxy"
+		echo "cleaning git proxy"
 		git config --global --unset http.proxy
 		git config --global --unset https.proxy
 		if grep -q "Host github.com" ~/.ssh/config; then
@@ -68,7 +68,7 @@ else
 	echo "usage: gitproxy [arg]"
 	echo "[arg]:"
 	echo "      set:   to enable git proxy"
-	echo "      clear: to disable git proxy"
+	echo "      clean: to disable git proxy"
 	echo check:
 	git config --global --get http.proxy;git config --global --get https.proxy
 	exit 0
