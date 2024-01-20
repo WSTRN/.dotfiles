@@ -67,9 +67,8 @@ vnoremap <C-_> :call nerdcommenter#Comment("x", "toggle")<CR>
 nnoremap <C-_> :call nerdcommenter#Comment(0, "toggle")<CR>
 inoremap <C-_> <cmd> call nerdcommenter#Comment(0, "toggle")<CR>
 
-vnoremap <C-c> :call nerdcommenter#Comment("x", "toggle")<CR>
-nnoremap <C-c> :call nerdcommenter#Comment(0, "toggle")<CR>
-inoremap <C-c> <cmd> call nerdcommenter#Comment(0, "toggle")<CR>
+vnoremap <LEADER>c :call nerdcommenter#Comment("x", "toggle")<CR>
+nnoremap <LEADER>c :call nerdcommenter#Comment(0, "toggle")<CR>
 
 
 
