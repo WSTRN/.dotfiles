@@ -453,14 +453,21 @@ require("neo-tree").setup({
 			["j"] = "close_node",
 			["o"] = function(state)
 				state.commands["open"](state)
-				vim.cmd("Neotree reveal")
+				local node = state.tree:get_node()
+				if node.type ~= "directory" then
+					vim.cmd("Neotree reveal")
+				end
 			end,
 			["<Tab>"] = { "toggle_preview", config = { use_float = true } },
-			["<cr>"] = "open",
-			["e"] = function(state)
+			["e"] = "open",
+			["<cr>"] = function(state)
 				state.commands["open"](state)
-				vim.cmd("Neotree close")
+				local node = state.tree:get_node()
+				if node.type ~= "directory" then
+					vim.cmd("Neotree close")
+				end
 			end,
+
 			["sh"] = "open_split",
 			["sv"] = "open_vsplit",
 			-- ["S"] = "split_with_window_picker",
