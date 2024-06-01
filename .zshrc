@@ -74,7 +74,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias f='neofetch'
+alias clear='clear;neofetch'
 alias vi='nvim'
 alias ta='tmux attach'
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
