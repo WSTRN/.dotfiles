@@ -502,6 +502,8 @@ require("neo-tree").setup({
 			["q"] = "close_window",
 			["R"] = "refresh",
 			["?"] = "show_help",
+			["."] = "next_source",
+			[","] = "prev_source",
 		}
 	},
 	nesting_rules = {},
@@ -511,8 +513,8 @@ require("neo-tree").setup({
 		-- instead of relying on nvim autocmd events.
 		window = {
 			mappings = {
-				["<bs>"] = "navigate_up",
-				["."] = "set_root",
+				["<"] = "navigate_up",
+				[">"] = "set_root",
 				["H"] = "toggle_hidden",
 				["/"] = "fuzzy_finder",
 				["D"] = "fuzzy_finder_directory",
@@ -531,8 +533,8 @@ require("neo-tree").setup({
 		window = {
 			mappings = {
 				["d"] = "buffer_delete",
-				["<bs>"] = "navigate_up",
-				["."] = "set_root",
+				["<"] = "navigate_up",
+				[">"] = "set_root",
 			}
 		},
 	},
