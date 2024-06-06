@@ -148,7 +148,7 @@ vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 
 --toggleterm-----------------------------------------
 require("toggleterm").setup {
-	open_mapping = [[<C-\>]],
+	open_mapping = [[<S-Tab>]],
 	direction = "float",
 	float_opts = {
 		border = "curved",
@@ -830,7 +830,7 @@ cmp.setup({
 			elseif luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
-				fallback()
+				cmp.complete()
 			end
 		end, { "i", "s" }),
 	}),
