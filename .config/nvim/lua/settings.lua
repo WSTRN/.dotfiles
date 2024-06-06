@@ -148,7 +148,7 @@ vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 
 --toggleterm-----------------------------------------
 require("toggleterm").setup {
-	open_mapping = [[<S-Tab>]],
+	open_mapping = [[<C-\>]],
 	direction = "float",
 	float_opts = {
 		border = "curved",
@@ -453,14 +453,21 @@ require("neo-tree").setup({
 			["j"] = "close_node",
 			["o"] = function(state)
 				state.commands["open"](state)
-				vim.cmd("Neotree reveal")
+				local node = state.tree:get_node()
+				if node.type ~= "directory" then
+					vim.cmd("Neotree reveal")
+				end
 			end,
 			["<Tab>"] = { "toggle_preview", config = { use_float = true } },
-			["<cr>"] = "open",
-			["e"] = function(state)
+			["e"] = "open",
+			["<cr>"] = function(state)
 				state.commands["open"](state)
-				vim.cmd("Neotree close")
+				local node = state.tree:get_node()
+				if node.type ~= "directory" then
+					vim.cmd("Neotree close")
+				end
 			end,
+
 			["sh"] = "open_split",
 			["sv"] = "open_vsplit",
 			-- ["S"] = "split_with_window_picker",
@@ -495,6 +502,8 @@ require("neo-tree").setup({
 			["q"] = "close_window",
 			["R"] = "refresh",
 			["?"] = "show_help",
+			["."] = "next_source",
+			[","] = "prev_source",
 		}
 	},
 	nesting_rules = {},
@@ -504,8 +513,8 @@ require("neo-tree").setup({
 		-- instead of relying on nvim autocmd events.
 		window = {
 			mappings = {
-				["<bs>"] = "navigate_up",
-				["."] = "set_root",
+				["<"] = "navigate_up",
+				[">"] = "set_root",
 				["H"] = "toggle_hidden",
 				["/"] = "fuzzy_finder",
 				["D"] = "fuzzy_finder_directory",
@@ -524,8 +533,8 @@ require("neo-tree").setup({
 		window = {
 			mappings = {
 				["d"] = "buffer_delete",
-				["<bs>"] = "navigate_up",
-				["."] = "set_root",
+				["<"] = "navigate_up",
+				[">"] = "set_root",
 			}
 		},
 	},

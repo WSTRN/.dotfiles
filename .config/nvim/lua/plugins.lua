@@ -43,7 +43,7 @@ return require('packer').startup({
 		--use 'liuchengxu/vista.vim'
 		use 'lewis6991/gitsigns.nvim'
 		use 'simrat39/symbols-outline.nvim'
-		use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
+		use { 'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons' }
 		use 'tiagovla/scope.nvim'
 		use {
 			"nvim-neo-tree/neo-tree.nvim",
