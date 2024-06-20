@@ -16,20 +16,27 @@ wk.register({
 		["<leader>9"] = { "<cmd>lua require('bufferline').go_to_buffer(9, true)<cr>", "go buffer 9" },
 		["<leader>0"] = { "<cmd>lua require('bufferline').go_to_buffer(-1, true)<cr>", "go last buffer" },
 		["<leader><Backspace>"] = { "<cmd>BufferLinePickClose<cr>", "pick close buffer" },
-		["<leader><Space>"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
+		["<leader>p"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
 
 		["<leader>u"] = { "<cmd>UndotreeToggle<cr>", "open undo tree" },
 
-		["<leader>/f"] = { "<cmd>Telescope find_files<cr>", "Telescope find file" },
-		["<leader>g"] = { "<cmd>Telescope live_grep<cr>", "Telescope live grep" },
-		["<leader>/b"] = { "<cmd>Telescope buffers<cr>", "Telescope find buffer" },
-		["<leader>/h"] = { "<cmd>Telescope help_tags<cr>", "Telescope find help tags" },
-		["<leader>/k"] = { "<cmd>Telescope keymaps<cr>", "Telescope find keymaps" },
+		["<leader>f"] = { "<cmd>Telescope live_grep<cr>", "Telescope live grep" },
+		["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Telescope find file" },
+		["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Telescope find buffer" },
+		["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Telescope find help tags" },
+		["<leader>fk"] = { "<cmd>Telescope keymaps<cr>", "Telescope find keymaps" },
 
 		["<leader>v"] = { "<cmd>SymbolsOutline<cr>", "symbols outline" },
+		["<leader>m"] = { function() require('dropbar.api').pick() end, "dropbar pick" },
 
 		["<leader>t"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
+		["<leader><Space>"] = { function() require("flash").jump() end, "Flash" },
+		["<leader>s"] = { function() require("flash").treesitter() end, "Flash" },
 
 	},
 	{ mode = "n", })
 
+wk.register({
+		["<leader>j"] = { function() require("flash").jump() end, "Flash" },
+	},
+	{ mode = "v", })

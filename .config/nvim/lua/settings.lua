@@ -42,7 +42,7 @@ require("Comment").setup({
 --which-key.nvim--------------------------------------------
 require("which-key").setup({
 	window = {
-		border = "single",  -- none, single, double, shadow
+		border = "rounded",  -- none, single, double, shadow
 		position = "bottom", -- bottom, top
 		margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
 		padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
@@ -679,6 +679,7 @@ require 'nvim-treesitter.configs'.setup {
 		"c",
 		"go",
 		"python",
+		"vimdoc"
 	},
 	highlight = {
 		enable = true,
@@ -745,7 +746,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set('n', 'gDD', vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
+	vim.keymap.set('n', '<space>a', vim.lsp.buf.format, bufopts)
 	vim.keymap.set('n', 'ge', vim.diagnostic.open_float, bufopts)
 	vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, bufopts)
 	vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, bufopts)
@@ -1028,3 +1029,70 @@ require('symbols-outline').setup({
 		Fragment = { icon = "", hl = "@constant" },
 	},
 })
+--
+--
+--dropbar
+--
+local dbopts = require('dropbar.configs').opts
+local utils = require('dropbar.utils')
+dbopts.menu.keymaps = {
+	['j'] = '<C-w>q',
+	['<Esc>'] = function()
+		utils.menu.exec('close')
+	end,
+	['l'] = function()
+		local menu = utils.menu.get_current()
+		if not menu then
+			return
+		end
+		local cursor = vim.api.nvim_win_get_cursor(menu.win)
+		local component = menu.entries[cursor[1]]:first_clickable(cursor[2])
+		if component then
+			menu:click_on(component, nil, 1, 'l')
+		end
+	end,
+	['<CR>'] = function()
+		local menu = utils.menu.get_current()
+		if not menu then
+			return
+		end
+		local cursor = vim.api.nvim_win_get_cursor(menu.win)
+		local component = menu.entries[cursor[1]]:next_clickable(cursor[2])
+		if component then
+			menu:click_on(component, nil, 1, 'l')
+		end
+	end,
+	['i'] = {},
+	['<LeftMouse>'] = function()
+		local menu = utils.menu.get_current()
+		if not menu then
+			return
+		end
+		local mouse = vim.fn.getmousepos()
+		local clicked_menu = utils.menu.get({ win = mouse.winid })
+		-- If clicked on a menu, invoke the corresponding click action,
+		-- else close all menus and set the cursor to the clicked window
+		if clicked_menu then
+			clicked_menu:click_at({ mouse.line, mouse.column - 1 }, nil, 1, 'l')
+			--[[ return ]]
+		end
+		utils.menu.exec('close')
+		utils.bar.exec('update_current_context_hl')
+		if vim.api.nvim_win_is_valid(mouse.winid) then
+			vim.api.nvim_set_current_win(mouse.winid)
+		end
+	end,
+	['<MouseMove>'] = function()
+		local menu = utils.menu.get_current()
+		if not menu then
+			return
+		end
+		local mouse = vim.fn.getmousepos()
+		utils.menu.update_hover_hl(mouse)
+		if dbopts.menu.preview then
+			utils.menu.update_preview(mouse)
+		end
+	end,
+}
+dbopts.menu.win_configs.border = "rounded"
+dbopts.bar.pick.pivots = "asdfjklghweruiovnmbty"

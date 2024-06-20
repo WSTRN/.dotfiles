@@ -144,7 +144,18 @@ local plugins = {
 			require("copilot_cmp").setup()
 		end
 	},
-
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
+		'Bekaboo/dropbar.nvim',
+		-- optional, but required for fuzzy finder support
+		dependencies = {
+			'nvim-telescope/telescope-fzf-native.nvim'
+		}
+	},
 }
 
 local opts = {}
