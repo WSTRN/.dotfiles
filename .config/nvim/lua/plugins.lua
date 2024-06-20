@@ -29,14 +29,28 @@ for _, v in ipairs(lazy_cmd_bindings) do
 end
 --vim.keymap.set("n", "<leader>pm", ":Lazy<CR>", { noremap = true })
 
+--plugins-------------------------------------------------------------------------
 local plugins = {
-	{ 'folke/tokyonight.nvim',   branch = 'main' },
+	{
+		"folke/tokyonight.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {}
+	},
 	'feline-nvim/feline.nvim',
 	'goolord/alpha-nvim',
 
 	{ 'akinsho/toggleterm.nvim', version = '*' },
 	'jiangmiao/auto-pairs',
-	'preservim/nerdcommenter',
+	'numToStr/Comment.nvim',
 	'RRethy/vim-illuminate', --highlight word
 	'mbbill/undotree',
 	'gcmt/wildfire.vim',

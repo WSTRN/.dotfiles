@@ -90,7 +90,7 @@ endfunction
 
 lua require('plugins')
 lua require('settings')
-source ~/.config/nvim/plugin_settings.vim
+lua require('keymaps')
 lua << EOF
 
 EOF
