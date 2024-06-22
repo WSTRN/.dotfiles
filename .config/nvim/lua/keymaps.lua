@@ -26,8 +26,8 @@ wk.register({
 		["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Telescope find help tags" },
 		["<leader>fk"] = { "<cmd>Telescope keymaps<cr>", "Telescope find keymaps" },
 
-		["<leader>v"] = { "<cmd>SymbolsOutline<cr>", "symbols outline" },
-		["<leader>m"] = { function() require('dropbar.api').pick() end, "dropbar pick" },
+		["<leader>m"] = { "<cmd>SymbolsOutline<cr>", "symbols outline" },
+		["<leader>v"] = { function() require('dropbar.api').pick() end, "dropbar pick" },
 
 		["<leader>t"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
 		["<leader><Space>"] = { function() require("flash").jump() end, "Flash" },

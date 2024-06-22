@@ -103,47 +103,49 @@ local plugins = {
 			require("scrollbar").setup()
 		end
 	},
-
-
-	'neovim/nvim-lspconfig',
-	'williamboman/mason.nvim',
-	'williamboman/mason-lspconfig.nvim',
-	--use {'junegunn/fzf', run = function() vim.fn['fzf#install'](0) }
-	'junegunn/fzf.vim',
 	{
 		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
 		dependencies = 'nvim-lua/plenary.nvim'
 	},
-	'honza/vim-snippets',
+	-- 'honza/vim-snippets',
 	{
 		'nvim-treesitter/nvim-treesitter',
 		build = function() require("nvim-treesitter.install").update { with_sync = true } end
-	}, --highlight language
-	'hrsh7th/cmp-nvim-lsp',
-	'hrsh7th/cmp-buffer',
-	'hrsh7th/cmp-path',
-	'hrsh7th/cmp-cmdline',
-	'hrsh7th/nvim-cmp',
-	'L3MON4D3/LuaSnip',
-	'saadparwaiz1/cmp_luasnip',
-	'rafamadriz/friendly-snippets',
+	},
+
+	'neovim/nvim-lspconfig',
+	'williamboman/mason.nvim',
+	'williamboman/mason-lspconfig.nvim',
+	'zbirenbaum/copilot.lua',
+	{
+		'L3MON4D3/LuaSnip',
+		version = "v2.*",
+		build = "make install_jsregexp",
+		dependencies = {
+			"rafamadriz/friendly-snippets"
+		}
+	},
+	{
+		'hrsh7th/nvim-cmp',
+		event = "InsertEnter",
+		dependencies = {
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+			'saadparwaiz1/cmp_luasnip',
+			{
+				"zbirenbaum/copilot-cmp",
+				dependencies = { 'zbirenbaum/copilot.lua' },
+				config = function()
+					require("copilot_cmp").setup()
+				end
+			},
+		},
+	},
 
 	'babaybus/DoxygenToolkit.vim',
-	--use 'github/copilot.vim'
-	{
-		"zbirenbaum/copilot.lua",
-		config = function()
-			require("copilot").setup({})
-		end
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		dependencies = { "copilot.lua" },
-		config = function()
-			require("copilot_cmp").setup()
-		end
-	},
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
