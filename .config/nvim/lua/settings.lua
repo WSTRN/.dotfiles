@@ -796,7 +796,6 @@ end
 
 local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
-
 local cmp = require("cmp")
 cmp.setup({
 	snippet = {
@@ -808,6 +807,21 @@ cmp.setup({
 	window = {
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
+	},
+	formatting = {
+		format = function(entry, vim_item)
+			-- Kind icons
+			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+			-- Source
+			vim_item.menu = ({
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				cmdline = "[CMD]",
+				path = "[Path]",
+			})[entry.source.name]
+			return vim_item
+		end
 	},
 	mapping = cmp.mapping.preset.insert({
 		['<C-i>'] = cmp.mapping.select_prev_item(),
