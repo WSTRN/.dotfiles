@@ -1,42 +1,136 @@
 local wk = require("which-key")
 wk.register({
-		["<leader>n"] = { "<cmd>tabe<cr>", "new tab" },
-		["<leader>]"] = { "<cmd>+tabnext<cr>", "next tab" },
-		["<leader>["] = { "<cmd>-tabnext<cr>", "prev tab" },
-		["<leader>="] = { "<cmd>BufferLineCycleNext<cr>", "next buffer" },
-		["<leader>-"] = { "<cmd>BufferLineCyclePrev<cr>", "prev buffer" },
-		["<leader>1"] = { "<cmd>lua require('bufferline').go_to_buffer(1, true)<cr>", "go buffer 1" },
-		["<leader>2"] = { "<cmd>lua require('bufferline').go_to_buffer(2, true)<cr>", "go buffer 2" },
-		["<leader>3"] = { "<cmd>lua require('bufferline').go_to_buffer(3, true)<cr>", "go buffer 3" },
-		["<leader>4"] = { "<cmd>lua require('bufferline').go_to_buffer(4, true)<cr>", "go buffer 4" },
-		["<leader>5"] = { "<cmd>lua require('bufferline').go_to_buffer(5, true)<cr>", "go buffer 5" },
-		["<leader>6"] = { "<cmd>lua require('bufferline').go_to_buffer(6, true)<cr>", "go buffer 6" },
-		["<leader>7"] = { "<cmd>lua require('bufferline').go_to_buffer(7, true)<cr>", "go buffer 7" },
-		["<leader>8"] = { "<cmd>lua require('bufferline').go_to_buffer(8, true)<cr>", "go buffer 8" },
-		["<leader>9"] = { "<cmd>lua require('bufferline').go_to_buffer(9, true)<cr>", "go buffer 9" },
-		["<leader>0"] = { "<cmd>lua require('bufferline').go_to_buffer(-1, true)<cr>", "go last buffer" },
-		["<leader><Backspace>"] = { "<cmd>BufferLinePickClose<cr>", "pick close buffer" },
-		["<leader>p"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
-
-		["<leader>u"] = { "<cmd>UndotreeToggle<cr>", "open undo tree" },
-
-		["<leader>f"] = { "<cmd>Telescope live_grep<cr>", "Telescope live grep" },
-		["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Telescope find file" },
-		["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Telescope find buffer" },
-		["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Telescope find help tags" },
-		["<leader>fk"] = { "<cmd>Telescope keymaps<cr>", "Telescope find keymaps" },
-
-		["<leader>m"] = { "<cmd>SymbolsOutline<cr>", "symbols outline" },
-		["<leader>v"] = { function() require('dropbar.api').pick() end, "dropbar pick" },
-
-		["<leader>t"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
-		["<leader><Space>"] = { function() require("flash").jump() end, "Flash" },
-		["<leader>s"] = { function() require("flash").treesitter() end, "Flash" },
-
+	["<leader>"] = {
+		name = "buffers&tabes",
+		["n"] = { "<cmd>tabe<cr>", "new tab" },
+		["]"] = { "<cmd>+tabnext<cr>", "next tab" },
+		["["] = { "<cmd>-tabnext<cr>", "prev tab" },
+		["="] = { "<cmd>BufferLineCycleNext<cr>", "next buffer" },
+		["-"] = { "<cmd>BufferLineCyclePrev<cr>", "prev buffer" },
+		["1"] = {
+			function()
+				require("bufferline").go_to_buffer(1, true)
+			end,
+			"go buffer 1",
+		},
+		["2"] = {
+			function()
+				require("bufferline").go_to_buffer(2, true)
+			end,
+			"go buffer 2",
+		},
+		["3"] = {
+			function()
+				require("bufferline").go_to_buffer(3, true)
+			end,
+			"go buffer 3",
+		},
+		["4"] = {
+			function()
+				require("bufferline").go_to_buffer(4, true)
+			end,
+			"go buffer 4",
+		},
+		["5"] = {
+			function()
+				require("bufferline").go_to_buffer(5, true)
+			end,
+			"go buffer 5",
+		},
+		["6"] = {
+			function()
+				require("bufferline").go_to_buffer(6, true)
+			end,
+			"go buffer 6",
+		},
+		["7"] = {
+			function()
+				require("bufferline").go_to_buffer(7, true)
+			end,
+			"go buffer 7",
+		},
+		["8"] = {
+			function()
+				require("bufferline").go_to_buffer(8, true)
+			end,
+			"go buffer 8",
+		},
+		["9"] = {
+			function()
+				require("bufferline").go_to_buffer(9, true)
+			end,
+			"go buffer 9",
+		},
+		["0"] = {
+			function()
+				require("bufferline").go_to_buffer(-1, true)
+			end,
+			"go last buffer",
+		},
+		["<Backspace>"] = { "<cmd>BufferLinePickClose<cr>", "pick close buffer" },
+		["p"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
 	},
-	{ mode = "n", })
+	["<leader>f"] = {
+		name = "Telescope",
+		["g"] = { "<cmd>Telescope live_grep<cr>", "Telescope live grep" },
+		["f"] = { "<cmd>Telescope find_files<cr>", "Telescope find file" },
+		["b"] = { "<cmd>Telescope buffers<cr>", "Telescope find buffer" },
+		["h"] = { "<cmd>Telescope help_tags<cr>", "Telescope find help tags" },
+		["k"] = { "<cmd>Telescope keymaps<cr>", "Telescope find keymaps" },
+	},
+	["<leader>u"] = { "<cmd>UndotreeToggle<cr>", "open undo tree" },
+	["<leader>m"] = { "<cmd>SymbolsOutline<cr>", "symbols outline" },
+	["<leader>v"] = {
+		function()
+			require("dropbar.api").pick()
+		end,
+		"dropbar pick",
+	},
+	["<leader>t"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
+	["<leader><Space>"] = {
+		function()
+			require("flash").jump()
+		end,
+		"Flash",
+	},
+	["<leader>s"] = {
+		function()
+			require("flash").treesitter()
+		end,
+		"Flash",
+	},
+
+	["g"] = {
+		name = "lsp",
+		["D"] = { vim.lsp.buf.declaration, "go to declaration" },
+		["d"] = { vim.lsp.buf.definition, "go to definition" },
+		["r"] = { vim.lsp.buf.references, "go to references" },
+		["h"] = { vim.lsp.buf.hover, "hover" },
+		["i"] = { vim.lsp.buf.implementation, "go to implementation" },
+		["td"] = { vim.lsp.buf.type_definition, "go to type definition" },
+		["e"] = { vim.diagnostic.open_float, "open diagnostic" },
+		["["] = { vim.diagnostic.goto_prev, "prev diagnostic" },
+		["]"] = { vim.diagnostic.goto_next, "next diagnostic" },
+		["f"] = {
+			function()
+				require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
+			end,
+			"Format",
+		},
+	},
+}, { mode = "n" })
 
 wk.register({
-		["<leader>j"] = { function() require("flash").jump() end, "Flash" },
+	["<leader>j"] = {
+		function()
+			require("flash").jump()
+		end,
+		"Flash",
 	},
-	{ mode = "v", })
+	["gf"] = {
+		function()
+			require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
+		end,
+		"Format",
+	},
+}, { mode = "v" })

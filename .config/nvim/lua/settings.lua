@@ -1,6 +1,6 @@
-require('gitsigns').setup {}
+require("gitsigns").setup({})
 require("scrollbar.handlers.gitsigns").setup()
-require('scope').setup()
+require("scope").setup()
 
 --tokyonight----------------------------------------
 require("tokyonight").setup({
@@ -11,26 +11,26 @@ require("tokyonight").setup({
 })
 vim.cmd([[colorscheme tokyonight]])
 --nvim-web-devicons----------------------------------------
-require("nvim-web-devicons").set_icon {
+require("nvim-web-devicons").set_icon({
 	dockerfile = {
 		icon = "",
 		color = "#99CCFF",
-		name = "Dockerfile"
-	}
-}
+		name = "Dockerfile",
+	},
+})
 --comment.nvim--------------------------------------------
 require("Comment").setup({
 	toggler = {
 		---Line-comment toggle keymap
-		line = '<C-_>',
+		line = "<C-_>",
 		---Block-comment toggle keymap
-		block = '<leader>c',
+		block = "<leader>c",
 	},
 	opleader = {
 		---Line-comment keymap
-		line = '<C-_>',
+		line = "<C-_>",
 		---Block-comment keymap
-		block = '<leader>c',
+		block = "<leader>c",
 	},
 	mappings = {
 		---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
@@ -46,14 +46,14 @@ require("which-key").setup({
 		position = "bottom", -- bottom, top
 		margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
 		padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
-		winblend = 0,       -- value between 0-100 0 for fully opaque and 100 for fully transparent
-		zindex = 1000,      -- positive value to position WhichKey above other floating windows.
+		winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+		zindex = 1000, -- positive value to position WhichKey above other floating windows.
 	},
 	layout = {
 		height = { min = 3, max = 5 }, -- min and max height of the columns
 		width = { min = 20, max = 30 }, -- min and max width of the columns
-		spacing = 2,              -- spacing between columns
-		align = "left",           -- align columns left, center or right
+		spacing = 2, -- spacing between columns
+		align = "left", -- align columns left, center or right
 	},
 	triggers_blacklist = {
 		-- list of mode / prefixes that should never be hooked by WhichKey
@@ -62,7 +62,6 @@ require("which-key").setup({
 		v = { "v", "d" },
 	},
 })
-
 
 --alpha-------------------------------------------------
 local alpha = require("alpha")
@@ -180,8 +179,11 @@ dashboard.section.buttons.val = {
 	dashboard.button("SPC /", "  > Find file", ":Telescope find_files <CR>"),
 	dashboard.button("SPC g", "  > Live grep", ":Telescope live_grep<CR>"),
 	dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-	dashboard.button("s", "  > Settings",
-		":e $MYVIMRC | :cd %:p:h | :e ./lua/plugins.lua | :e ./lua/keymaps.lua | :e ./lua/settings.lua | :Neotree<CR> | <C-w>l"),
+	dashboard.button(
+		"s",
+		"  > Settings",
+		":e $MYVIMRC | :cd %:p:h | :e ./lua/plugins.lua | :e ./lua/keymaps.lua | :e ./lua/settings.lua | :Neotree<CR> | <C-w>l"
+	),
 	dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 }
 
@@ -191,29 +193,28 @@ alpha.setup(dashboard.opts)
 -- Disable folding on alpha buffer
 vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 
-
 --toggleterm-----------------------------------------
-require("toggleterm").setup {
+require("toggleterm").setup({
 	open_mapping = [[<S-Tab>]],
 	direction = "float",
 	float_opts = {
 		border = "curved",
-	}
-}
+	},
+})
 
 --feline-----------------------------------------
 local colors = {
-	bg = '#282c34',
-	fg = '#abb2bf',
-	yellow = '#e0af68',
-	cyan = '#56b6c2',
-	darkblue = '#081633',
-	green = '#98c379',
-	orange = '#d19a66',
-	violet = '#a9a1e1',
-	magenta = '#c678dd',
-	blue = '#61afef',
-	red = '#e86671'
+	bg = "#282c34",
+	fg = "#abb2bf",
+	yellow = "#e0af68",
+	cyan = "#56b6c2",
+	darkblue = "#081633",
+	green = "#98c379",
+	orange = "#d19a66",
+	violet = "#a9a1e1",
+	magenta = "#c678dd",
+	blue = "#61afef",
+	red = "#e86671",
 }
 local vi_mode_colors = {
 	NORMAL = colors.green,
@@ -222,35 +223,35 @@ local vi_mode_colors = {
 	OP = colors.green,
 	BLOCK = colors.blue,
 	REPLACE = colors.violet,
-	['V-REPLACE'] = colors.violet,
+	["V-REPLACE"] = colors.violet,
 	ENTER = colors.cyan,
 	MORE = colors.cyan,
 	SELECT = colors.orange,
 	COMMAND = colors.green,
 	SHELL = colors.green,
 	TERM = colors.green,
-	NONE = colors.yellow
+	NONE = colors.yellow,
 }
 local function file_osinfo()
 	local os = vim.bo.fileformat:upper()
 	local icon
-	if os == 'UNIX' then
-		icon = '  '
-	elseif os == 'MAC' then
-		icon = '  '
+	if os == "UNIX" then
+		icon = "  "
+	elseif os == "MAC" then
+		icon = "  "
 	else
-		icon = '  '
+		icon = "  "
 	end
 	return icon .. os
 end
 
 --local lsp = require 'feline.providers.lsp'
-local vi_mode_utils = require 'feline.providers.vi_mode'
+local vi_mode_utils = require("feline.providers.vi_mode")
 local comps = {
 	vi_mode = {
 		left = {
 			provider = function()
-				return '  ' .. vi_mode_utils.get_vim_mode() -- 
+				return "  " .. vi_mode_utils.get_vim_mode() -- 
 			end,
 			hl = function()
 				local val = {
@@ -260,7 +261,7 @@ local comps = {
 				}
 				return val
 			end,
-			right_sep = ' '
+			right_sep = " ",
 		},
 		right = {
 			-- provider = '▊',
@@ -268,129 +269,131 @@ local comps = {
 			hl = function()
 				local val = {
 					name = vi_mode_utils.get_mode_highlight_name(),
-					fg = vi_mode_utils.get_mode_color()
+					fg = vi_mode_utils.get_mode_color(),
 				}
 				return val
 			end,
-			left_sep = ' ',
-			right_sep = ' '
-		}
+			left_sep = " ",
+			right_sep = " ",
+		},
 	},
 	file = {
 		info = {
 			provider = {
-				name = 'file_info',
+				name = "file_info",
 				opts = {
-					type = 'relative-short',
-					file_readonly_icon = '  ',
+					type = "relative-short",
+					file_readonly_icon = "  ",
 					-- file_readonly_icon = '  ',
 					-- file_readonly_icon = '  ',
 					-- file_readonly_icon = '  ',
 					-- file_modified_icon = '',
-					file_modified_icon = '',
+					file_modified_icon = "",
 					-- file_modified_icon = 'ﱐ',
 					-- file_modified_icon = '',
 					-- file_modified_icon = '',
 					-- file_modified_icon = '',
-				}
+				},
 			},
 			hl = {
 				fg = colors.blue,
-				style = 'bold'
-			}
+				style = "bold",
+			},
 		},
 		encoding = {
-			provider = 'file_encoding',
-			left_sep = ' ',
+			provider = "file_encoding",
+			left_sep = " ",
 			hl = {
 				fg = colors.violet,
-				style = 'bold'
-			}
+				style = "bold",
+			},
 		},
 		type = {
-			provider = 'file_type'
+			provider = "file_type",
 		},
 		os = {
 			provider = file_osinfo,
 			--left_sep = ' ',
 			hl = {
 				fg = colors.violet,
-				style = 'bold'
-			}
+				style = "bold",
+			},
 		},
 		position = {
-			provider = 'position',
-			left_sep = ' ',
+			provider = "position",
+			left_sep = " ",
 			hl = {
 				fg = colors.cyan,
 				-- style = 'bold'
-			}
+			},
 		},
 	},
 	left_end = {
-		provider = function() return '' end,
+		provider = function()
+			return ""
+		end,
 		hl = {
 			fg = colors.bg,
 			bg = colors.blue,
-		}
+		},
 	},
 	line_percentage = {
-		provider = 'line_percentage',
-		left_sep = ' ',
+		provider = "line_percentage",
+		left_sep = " ",
 		hl = {
-			style = 'bold'
-		}
+			style = "bold",
+		},
 	},
 	scroll_bar = {
-		provider = 'scroll_bar',
-		left_sep = ' ',
+		provider = "scroll_bar",
+		left_sep = " ",
 		hl = {
 			fg = colors.blue,
-			style = 'bold'
-		}
+			style = "bold",
+		},
 	},
 	lsp = {
 		name = {
-			provider = 'lsp_client_names',
+			provider = "lsp_client_names",
 			-- left_sep = ' ',
 			--right_sep = ' ',
-			icon = ' ',
+			icon = " ",
 			--icon = '慎',
 			hl = {
-				fg = colors.yellow
-			}
-		}
+				fg = colors.yellow,
+			},
+		},
 	},
 	git = {
 		branch = {
-			provider = 'git_branch',
+			provider = "git_branch",
 			--icon = ' ',
-			icon = ' ',
-			left_sep = ' ',
+			icon = " ",
+			left_sep = " ",
 			hl = {
 				fg = colors.violet,
-				style = 'bold'
+				style = "bold",
 			},
 		},
 		add = {
-			provider = 'git_diff_added',
+			provider = "git_diff_added",
 			hl = {
-				fg = colors.green
-			}
+				fg = colors.green,
+			},
 		},
 		change = {
-			provider = 'git_diff_changed',
+			provider = "git_diff_changed",
 			hl = {
-				fg = colors.orange
-			}
+				fg = colors.orange,
+			},
 		},
 		remove = {
-			provider = 'git_diff_removed',
+			provider = "git_diff_removed",
 			hl = {
-				fg = colors.red
-			}
-		}
-	}
+				fg = colors.red,
+			},
+		},
+	},
 }
 local components = {
 	active = {},
@@ -416,21 +419,21 @@ table.insert(components.active[3], comps.file.position)
 table.insert(components.active[3], comps.line_percentage)
 table.insert(components.active[3], comps.scroll_bar)
 table.insert(components.active[3], comps.vi_mode.right)
-require("feline").setup {
+require("feline").setup({
 	colors = { bg = colors.bg, fg = colors.fg },
 	components = components,
 	vi_mode_colors = vi_mode_colors,
 	force_inactive = {
 		filetypes = {
-			'packer',
-			'neo-tree',
-			'fugitive',
-			'fugitiveblame'
+			"packer",
+			"neo-tree",
+			"fugitive",
+			"fugitiveblame",
 		},
-		buftypes = { 'terminal' },
-		bufnames = {}
-	}
-}
+		buftypes = { "terminal" },
+		bufnames = {},
+	},
+})
 --window-picker-----------------------------------------------------------------------
 --require'window-picker'.setup()
 
@@ -449,7 +452,7 @@ require("neo-tree").setup({
 			-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
 			-- then these will never be used.
 			default = "",
-			highlight = "NeoTreeFileIcon"
+			highlight = "NeoTreeFileIcon",
 		},
 		modified = {
 			symbol = "[+]",
@@ -463,17 +466,17 @@ require("neo-tree").setup({
 		git_status = {
 			symbols = {
 				-- Change type
-				added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-				modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-				deleted   = "✖", -- this can only be used in the git_status source
-				renamed   = "", -- this can only be used in the git_status source
+				added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+				modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+				deleted = "✖", -- this can only be used in the git_status source
+				renamed = "", -- this can only be used in the git_status source
 				--	 Status type
 				untracked = "",
-				ignored   = "",
-				unstaged  = "",
-				staged    = "",
-				conflict  = "",
-			}
+				ignored = "",
+				unstaged = "",
+				staged = "",
+				conflict = "",
+			},
 		},
 	},
 	window = {
@@ -528,7 +531,7 @@ require("neo-tree").setup({
 				-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 				config = {
 					show_path = "none", -- "none", "relative", "absolute"
-				}
+				},
 			},
 			["A"] = "add_directory", -- also accepts the optional config.show_path option like "add".
 			["d"] = "delete",
@@ -550,7 +553,7 @@ require("neo-tree").setup({
 			["?"] = "show_help",
 			["."] = "next_source",
 			[","] = "prev_source",
-		}
+		},
 	},
 	nesting_rules = {},
 	filesystem = {
@@ -568,8 +571,8 @@ require("neo-tree").setup({
 				["<c-x>"] = "clear_filter",
 				["[g"] = "prev_git_modified",
 				["]g"] = "next_git_modified",
-			}
-		}
+			},
+		},
 	},
 	buffers = {
 		follow_current_file = true, -- This will find and focus the file in the active buffer every
@@ -581,7 +584,7 @@ require("neo-tree").setup({
 				["d"] = "buffer_delete",
 				["<"] = "navigate_up",
 				[">"] = "set_root",
-			}
+			},
 		},
 	},
 	git_status = {
@@ -595,13 +598,13 @@ require("neo-tree").setup({
 				["gc"] = "git_commit",
 				["gp"] = "git_push",
 				["gg"] = "git_commit_and_push",
-			}
-		}
-	}
+			},
+		},
+	},
 })
 
 --telescope------------------------------------------------------------------------
-require('telescope').setup {
+require("telescope").setup({
 	defaults = {
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
@@ -618,7 +621,7 @@ require('telescope').setup {
 				["i"] = "move_selection_previous",
 				["<C-h>"] = "select_horizontal",
 				["<C-v>"] = "select_vertical",
-				["j"] = false
+				["j"] = false,
 			},
 		},
 	},
@@ -667,11 +670,11 @@ require('telescope').setup {
 		--   extension_config_key = value,
 		-- }
 		-- please take a look at the readme of the extension you want to configure
-	}
-}
+	},
+})
 
 --treesitter---------------------------------------------------------------------------------------
-require 'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
 
 	ensure_installed = {
 		"lua",
@@ -679,7 +682,7 @@ require 'nvim-treesitter.configs'.setup {
 		"c",
 		"go",
 		"python",
-		"vimdoc"
+		"vimdoc",
 	},
 	highlight = {
 		enable = true,
@@ -693,13 +696,13 @@ require 'nvim-treesitter.configs'.setup {
 			node_decremental = "<BS>",
 		},
 	},
-}
+})
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.wo.foldlevel = 99
 
 --mason--------------------------------------------------------------------------------------------
-require('mason').setup({
+require("mason").setup({
 	ui = {
 		icons = {
 			package_installed = "✓",
@@ -708,24 +711,51 @@ require('mason').setup({
 		},
 		keymaps = {
 			install_package = "e",
-		}
-	}
+		},
+	},
 })
 
 local lspservers = {
-	'pyright',
-	'rust_analyzer',
-	'tsserver',
-	'lua_ls',
-	'vimls',
-	'clangd',
-	'bashls',
-	'cmake',
-	'prosemd_lsp',
+	"pyright",
+	"rust_analyzer",
+	"tsserver",
+	"lua_ls",
+	"vimls",
+	"clangd",
+	"bashls",
+	"cmake",
+	"prosemd_lsp",
 }
 
-require('mason-lspconfig').setup({
-	ensure_installed = lspservers
+require("mason-lspconfig").setup({
+	ensure_installed = lspservers,
+})
+
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"prettier", -- prettier formatter
+		"stylua", -- lua formatter
+		"isort", -- python formatter
+		"black", -- python formatter
+		"sql-formatter", -- sql formatter
+	},
+})
+
+--conform.nvim-----------------------------------------------------------------------------------------------
+require("conform").setup({
+	formatters_by_ft = {
+		json = { "prettier" },
+		yaml = { "prettier" },
+		markdown = { "prettier" },
+		lua = { "stylua" },
+		python = { "isort", "black" },
+		-- sql = { "sql-formatter", args = { "$FILENAME" } },
+	},
+	-- format_on_save = {
+	-- 	lsp_fallback = true,
+	-- 	async = false,
+	-- 	timeout_ms = 1000,
+	-- },
 })
 
 --
@@ -735,55 +765,33 @@ require('mason-lspconfig').setup({
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set('n', 'gDD', vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', '<space>fm', vim.lsp.buf.format, bufopts)
-	vim.keymap.set('n', 'ge', vim.diagnostic.open_float, bufopts)
-	vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, bufopts)
-	vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, bufopts)
-	vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, bufopts)
-end
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
 for _, lsp in pairs(lspservers) do
-	lspconfig[lsp].setup {
-		on_attach = on_attach,
+	lspconfig[lsp].setup({
 		capabilities = capabilities,
-	}
+	})
 end
-lspconfig.lua_ls.setup {
-	on_attach = on_attach,
+lspconfig.lua_ls.setup({
 	capabilities = capabilities,
 	settings = {
 		Lua = {
 			runtime = {
-				version = 'LuaJIT',
+				version = "LuaJIT",
 			},
 			diagnostics = {
-				globals = { 'vim' }
+				globals = { "vim" },
 			},
-		}
-	}
-}
+		},
+	},
+})
 local clang_capabilities = capabilities
 clang_capabilities.offsetEncoding = { "utf-16" }
-lspconfig.clangd.setup {
-	on_attach = on_attach,
+lspconfig.clangd.setup({
 	capabilities = clang_capabilities,
-}
+})
 
 --
 --nvim-cmp--------------------------------------------------------------------------------------------------
@@ -821,11 +829,11 @@ cmp.setup({
 				path = "[Path]",
 			})[entry.source.name]
 			return vim_item
-		end
+		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		['<C-i>'] = cmp.mapping.select_prev_item(),
-		['<C-k>'] = cmp.mapping.select_next_item(),
+		["<C-i>"] = cmp.mapping.select_prev_item(),
+		["<C-k>"] = cmp.mapping.select_next_item(),
 		["<C-Space>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.abort()
@@ -837,10 +845,10 @@ cmp.setup({
 		end, { "i", "s" }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.confirm {
+				cmp.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
-				}
+				})
 				--cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
@@ -863,34 +871,33 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "copilot" },
 		{ name = "buffer" },
-	})
+	}),
 })
 -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
+cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
-		{ name = 'buffer' }
-	})
+		{ name = "buffer" },
+	}),
 })
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
+cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
-		{ name = 'buffer' }
-	}
+		{ name = "buffer" },
+	},
 })
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
-		{ name = 'path' },
-		{ name = 'cmdline' }
+		{ name = "path" },
+		{ name = "cmdline" },
 	}),
-	matching = { disallow_symbol_nonprefix_matching = false }
+	matching = { disallow_symbol_nonprefix_matching = false },
 })
 
-
 --bufferline----------------------------------------------------------------
-require('bufferline').setup {
+require("bufferline").setup({
 	options = {
 		offsets = {
 			{
@@ -901,8 +908,8 @@ require('bufferline').setup {
 			},
 		},
 		--mode = "tabs",
-		buffer_close_icon = '', --'',
-		modified_icon = '●',
+		buffer_close_icon = "", --'',
+		modified_icon = "●",
 		show_close_icon = false,
 		left_trunc_marker = " ",
 		right_trunc_marker = " ",
@@ -918,14 +925,14 @@ require('bufferline').setup {
 		diagnostics = false,
 		themable = true,
 	},
-}
+})
 
 --copilot---------------------------------------------------------------------------
 --vim.keymap.set('i', '<C-J>', 'copilot#Accept()')
 --vim.cmd [[imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")]]
 --vim.cmd [[let g:copilot_no_tab_map = v:true]]
 
-require('copilot').setup({
+require("copilot").setup({
 	suggestion = { enabled = false },
 	panel = { enabled = false },
 })
@@ -934,21 +941,21 @@ require('copilot').setup({
 --
 --symbolsOutline-----------------------------------------------------------------------
 --
-require('symbols-outline').setup({
+require("symbols-outline").setup({
 	highlight_hovered_item = true,
 	show_guides = true,
 	auto_preview = false,
-	position = 'right',
+	position = "right",
 	relative_width = true,
 	width = 28,
 	auto_close = false,
 	show_numbers = false,
 	show_relative_numbers = false,
 	show_symbol_details = true,
-	preview_bg_highlight = 'Pmenu',
+	preview_bg_highlight = "Pmenu",
 	autofold_depth = nil,
 	auto_unfold_hover = true,
-	fold_markers = { '', '' },
+	fold_markers = { "", "" },
 	wrap = false,
 	keymaps = {
 		-- These keymaps can be a string or a table for multiple keys
@@ -1002,14 +1009,14 @@ require('symbols-outline').setup({
 --
 --dropbar
 --
-local dbopts = require('dropbar.configs').opts
-local utils = require('dropbar.utils')
+local dbopts = require("dropbar.configs").opts
+local utils = require("dropbar.utils")
 dbopts.menu.keymaps = {
-	['j'] = '<C-w>q',
-	['<Esc>'] = function()
-		utils.menu.exec('close')
+	["j"] = "<C-w>q",
+	["<Esc>"] = function()
+		utils.menu.exec("close")
 	end,
-	['l'] = function()
+	["l"] = function()
 		local menu = utils.menu.get_current()
 		if not menu then
 			return
@@ -1017,10 +1024,10 @@ dbopts.menu.keymaps = {
 		local cursor = vim.api.nvim_win_get_cursor(menu.win)
 		local component = menu.entries[cursor[1]]:first_clickable(cursor[2])
 		if component then
-			menu:click_on(component, nil, 1, 'l')
+			menu:click_on(component, nil, 1, "l")
 		end
 	end,
-	['<CR>'] = function()
+	["<CR>"] = function()
 		local menu = utils.menu.get_current()
 		if not menu then
 			return
@@ -1028,11 +1035,11 @@ dbopts.menu.keymaps = {
 		local cursor = vim.api.nvim_win_get_cursor(menu.win)
 		local component = menu.entries[cursor[1]]:next_clickable(cursor[2])
 		if component then
-			menu:click_on(component, nil, 1, 'l')
+			menu:click_on(component, nil, 1, "l")
 		end
 	end,
-	['i'] = {},
-	['<LeftMouse>'] = function()
+	["i"] = {},
+	["<LeftMouse>"] = function()
 		local menu = utils.menu.get_current()
 		if not menu then
 			return
@@ -1042,16 +1049,16 @@ dbopts.menu.keymaps = {
 		-- If clicked on a menu, invoke the corresponding click action,
 		-- else close all menus and set the cursor to the clicked window
 		if clicked_menu then
-			clicked_menu:click_at({ mouse.line, mouse.column - 1 }, nil, 1, 'l')
+			clicked_menu:click_at({ mouse.line, mouse.column - 1 }, nil, 1, "l")
 			--[[ return ]]
 		end
-		utils.menu.exec('close')
-		utils.bar.exec('update_current_context_hl')
+		utils.menu.exec("close")
+		utils.bar.exec("update_current_context_hl")
 		if vim.api.nvim_win_is_valid(mouse.winid) then
 			vim.api.nvim_set_current_win(mouse.winid)
 		end
 	end,
-	['<MouseMove>'] = function()
+	["<MouseMove>"] = function()
 		local menu = utils.menu.get_current()
 		if not menu then
 			return

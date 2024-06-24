@@ -43,18 +43,18 @@ local plugins = {
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {}
+		opts = {},
 	},
-	'feline-nvim/feline.nvim',
-	'goolord/alpha-nvim',
+	"feline-nvim/feline.nvim",
+	"goolord/alpha-nvim",
 
-	{ 'akinsho/toggleterm.nvim', version = '*' },
-	'jiangmiao/auto-pairs',
-	'numToStr/Comment.nvim',
-	'RRethy/vim-illuminate', --highlight word
-	'mbbill/undotree',
-	'gcmt/wildfire.vim',
-	'tpope/vim-surround',
+	{ "akinsho/toggleterm.nvim", version = "*" },
+	"jiangmiao/auto-pairs",
+	"numToStr/Comment.nvim",
+	"RRethy/vim-illuminate", --highlight word
+	"mbbill/undotree",
+	"gcmt/wildfire.vim",
+	"tpope/vim-surround",
 	--surround
 	--cs"' change surround
 	--ds"  del "
@@ -63,10 +63,10 @@ local plugins = {
 	--
 	-------------------------------------------
 	--use 'liuchengxu/vista.vim'
-	'lewis6991/gitsigns.nvim',
-	'simrat39/symbols-outline.nvim',
-	{ 'akinsho/bufferline.nvim', version = "*", dependencies = 'kyazdani42/nvim-web-devicons' },
-	'tiagovla/scope.nvim',
+	"lewis6991/gitsigns.nvim",
+	"simrat39/symbols-outline.nvim",
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "kyazdani42/nvim-web-devicons" },
+	"tiagovla/scope.nvim",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -76,91 +76,97 @@ local plugins = {
 			"MunifTanjim/nui.nvim",
 			{
 				-- only needed if you want to use the commands with "_with_window_picker" suffix
-				's1n7ax/nvim-window-picker',
+				"s1n7ax/nvim-window-picker",
 				version = "v1.*",
 				config = function()
-					require 'window-picker'.setup({
+					require("window-picker").setup({
 						autoselect_one = true,
 						include_current = false,
 						filter_rules = {
 							-- filter using buffer options
 							bo = {
 								-- if the file type is one of following, the window will be ignored
-								filetype = { 'neo-tree', "neo-tree-popup", "notify", "quickfix" },
+								filetype = { "neo-tree", "neo-tree-popup", "notify", "quickfix" },
 								-- if the buffer type is one of following, the window will be ignored
-								buftype = { 'terminal' },
+								buftype = { "terminal" },
 							},
 						},
-						other_win_hl_color = '#e35e4f',
+						other_win_hl_color = "#e35e4f",
 					})
 				end,
-			}
-		}
+			},
+		},
 	},
 	{
 		"petertriho/nvim-scrollbar",
 		config = function()
 			require("scrollbar").setup()
-		end
+		end,
 	},
 	{
-		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
-		dependencies = 'nvim-lua/plenary.nvim'
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = "nvim-lua/plenary.nvim",
 	},
 	-- 'honza/vim-snippets',
 	{
-		'nvim-treesitter/nvim-treesitter',
-		build = function() require("nvim-treesitter.install").update { with_sync = true } end
+		"nvim-treesitter/nvim-treesitter",
+		build = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
 	},
 
-	'neovim/nvim-lspconfig',
-	'williamboman/mason.nvim',
-	'williamboman/mason-lspconfig.nvim',
-	'zbirenbaum/copilot.lua',
+	"neovim/nvim-lspconfig",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"WhoIsSethDaniel/mason-tool-installer.nvim",
+	"zbirenbaum/copilot.lua",
 	{
-		'L3MON4D3/LuaSnip',
+		"L3MON4D3/LuaSnip",
 		version = "v2.*",
 		build = "make install_jsregexp",
 		dependencies = {
-			"rafamadriz/friendly-snippets"
-		}
+			"rafamadriz/friendly-snippets",
+		},
 	},
 	{
-		'hrsh7th/nvim-cmp',
+		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-			'saadparwaiz1/cmp_luasnip',
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"saadparwaiz1/cmp_luasnip",
 			{
 				"zbirenbaum/copilot-cmp",
-				dependencies = { 'zbirenbaum/copilot.lua' },
+				dependencies = { "zbirenbaum/copilot.lua" },
 				config = function()
 					require("copilot_cmp").setup()
-				end
+				end,
 			},
 		},
 	},
+	{
+		"stevearc/conform.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+	},
 
-	'babaybus/DoxygenToolkit.vim',
+	"babaybus/DoxygenToolkit.vim",
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		opts = {},
 	},
 	{
-		'Bekaboo/dropbar.nvim',
+		"Bekaboo/dropbar.nvim",
 		-- optional, but required for fuzzy finder support
 		dependencies = {
-			'nvim-telescope/telescope-fzf-native.nvim'
-		}
+			"nvim-telescope/telescope-fzf-native.nvim",
+		},
 	},
 }
 
 local opts = {}
-
 
 require("lazy").setup(plugins, opts)
