@@ -737,7 +737,6 @@ require("mason-tool-installer").setup({
 		"stylua", -- lua formatter
 		"isort", -- python formatter
 		"black", -- python formatter
-		"sql-formatter", -- sql formatter
 	},
 })
 
@@ -749,7 +748,6 @@ require("conform").setup({
 		markdown = { "prettier" },
 		lua = { "stylua" },
 		python = { "isort", "black" },
-		-- sql = { "sql-formatter", args = { "$FILENAME" } },
 	},
 	-- format_on_save = {
 	-- 	lsp_fallback = true,
