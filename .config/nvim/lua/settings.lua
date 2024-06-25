@@ -176,13 +176,13 @@ dashboard.section.header.opts.hl = pick_color()
 -- Set menu
 dashboard.section.buttons.val = {
 	dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-	dashboard.button("SPC /", "  > Find file", ":Telescope find_files <CR>"),
-	dashboard.button("SPC g", "  > Live grep", ":Telescope live_grep<CR>"),
+	dashboard.button("SPC ff", "  > Find file", ":Telescope find_files <CR>"),
+	dashboard.button("SPC fg", "  > Live grep", ":Telescope live_grep<CR>"),
 	dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
 	dashboard.button(
 		"s",
 		"  > Settings",
-		":e $MYVIMRC | :cd %:p:h | :e ./lua/plugins.lua | :e ./lua/keymaps.lua | :e ./lua/settings.lua | :Neotree<CR> | <C-w>l"
+		":e $MYVIMRC | :cd %:p:h | :e ./lua/plugins.lua | :e ./lua/keymaps.lua | :e ./lua/settings.lua | :Neotree<CR>"
 	),
 	dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 }
