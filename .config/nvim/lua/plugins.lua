@@ -19,6 +19,7 @@ local lazy_keys_bindings = {
 for _, v in ipairs(lazy_keys_bindings) do
 	lazy_keys[v.func] = v.key
 end
+
 local lazy_cmd = require("lazy.view.config").commands
 local lazy_cmd_bindings = {
 	{ cmd = "install", key = "E" },
@@ -31,140 +32,16 @@ end
 
 --plugins-------------------------------------------------------------------------
 local plugins = {
-	{
-		"folke/tokyonight.nvim",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-	},
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-		opts = {},
-	},
-	"feline-nvim/feline.nvim",
-	"goolord/alpha-nvim",
-
-	{ "akinsho/toggleterm.nvim", version = "*" },
-	"jiangmiao/auto-pairs",
-	"numToStr/Comment.nvim",
-	"RRethy/vim-illuminate", --highlight word
-	"mbbill/undotree",
-	"gcmt/wildfire.vim",
-	"tpope/vim-surround",
-	--surround
-	--cs"' change surround
-	--ds"  del "
-	--ysiw] add ] surround
-	--use S' in visual mode add ' surround
-	--
-	-------------------------------------------
-	--use 'liuchengxu/vista.vim'
-	"lewis6991/gitsigns.nvim",
-	"simrat39/symbols-outline.nvim",
-	{ "akinsho/bufferline.nvim", version = "*", dependencies = "kyazdani42/nvim-web-devicons" },
-	"tiagovla/scope.nvim",
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			{
-				-- only needed if you want to use the commands with "_with_window_picker" suffix
-				"s1n7ax/nvim-window-picker",
-				version = "v1.*",
-				config = function()
-					require("window-picker").setup({
-						autoselect_one = true,
-						include_current = false,
-						filter_rules = {
-							-- filter using buffer options
-							bo = {
-								-- if the file type is one of following, the window will be ignored
-								filetype = { "neo-tree", "neo-tree-popup", "notify", "quickfix" },
-								-- if the buffer type is one of following, the window will be ignored
-								buftype = { "terminal" },
-							},
-						},
-						other_win_hl_color = "#e35e4f",
-					})
-				end,
-			},
-		},
-	},
-	{
-		"petertriho/nvim-scrollbar",
-		config = function()
-			require("scrollbar").setup()
-		end,
-	},
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = "nvim-lua/plenary.nvim",
-	},
-	-- 'honza/vim-snippets',
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			require("nvim-treesitter.install").update({ with_sync = true })
-		end,
-	},
-
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	"zbirenbaum/copilot.lua",
-	{
-		"L3MON4D3/LuaSnip",
-		version = "v2.*",
-		build = "make install_jsregexp",
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-		},
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"saadparwaiz1/cmp_luasnip",
-			{
-				"zbirenbaum/copilot-cmp",
-				dependencies = { "zbirenbaum/copilot.lua" },
-				config = function()
-					require("copilot_cmp").setup()
-				end,
-			},
-		},
-	},
-	{
-		"stevearc/conform.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-	},
-
-	"babaybus/DoxygenToolkit.vim",
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
-	{
-		"Bekaboo/dropbar.nvim",
-		-- optional, but required for fuzzy finder support
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
-	},
+	require("lazy.colors"),
+	require("lazy.dashboard"),
+	require("lazy.terminal"),
+	require("lazy.misc"),
+	require("lazy.window"),
+	require("lazy.filebrowser"),
+	require("lazy.search"),
+	require("lazy.syntaxtree"),
+	require("lazy.lsp"),
+	require("lazy.completion"),
 }
 
 local opts = {}

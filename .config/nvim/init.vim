@@ -89,7 +89,6 @@ endfunction
 
 
 lua require('plugins')
-lua require('settings')
 lua require('keymaps')
 lua << EOF
 
