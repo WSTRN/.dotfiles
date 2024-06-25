@@ -1,13 +1,23 @@
 return {
 	{
+		"petertriho/nvim-scrollbar",
+		config = function()
+			require("scrollbar").setup()
+		end,
+	},
+	{
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",
-			"tiagovla/scope.nvim",
+			{
+				"tiagovla/scope.nvim",
+				config = function()
+					require("scope").setup()
+				end,
+			},
 		},
 		config = function()
-			require("scope").setup()
 			require("bufferline").setup({
 				options = {
 					offsets = {
