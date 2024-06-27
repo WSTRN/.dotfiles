@@ -103,7 +103,7 @@ return {
 		end
 
 		local function pick_color()
-			local colors = { "String", "Identifier", "Number" }
+			local colors = { "Directory", "WarningMsg" }
 			return colors[math.random(#colors)]
 		end
 
