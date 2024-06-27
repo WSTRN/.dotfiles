@@ -91,7 +91,12 @@ endfunction
 lua require('plugins')
 lua require('keymaps')
 lua << EOF
-
+if vim.g.vscode then
+	require("scrollbar").setup({ show = false })
+	require("lualine").setup({
+		sections = { lualine_a = {}, lualine_b = {}, lualine_c = {}, lualine_x = {}, lualine_y = {}, lualine_z = {} }
+	})
+end
 EOF
 "=== === === === === === === === === === === === === === === === === === === === === === === === === === === === === 
 
