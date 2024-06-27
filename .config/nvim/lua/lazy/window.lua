@@ -8,6 +8,7 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
+		event = "ColorScheme",
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",
 			{
@@ -23,7 +24,7 @@ return {
 					offsets = {
 						{
 							filetype = "neo-tree",
-							text = "File Explorer",
+							text = "File Browser",
 							highlight = "Directory",
 							text_align = "center",
 						},
@@ -50,230 +51,77 @@ return {
 		end,
 	},
 	{
-		"feline-nvim/feline.nvim",
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			local colors = {
-				bg = "#282c34",
-				fg = "#abb2bf",
-				yellow = "#e0af68",
-				cyan = "#56b6c2",
-				darkblue = "#081633",
-				green = "#98c379",
-				orange = "#d19a66",
-				violet = "#a9a1e1",
-				magenta = "#c678dd",
-				blue = "#61afef",
-				red = "#e86671",
-			}
-			local vi_mode_colors = {
-				NORMAL = colors.green,
-				INSERT = colors.red,
-				VISUAL = colors.magenta,
-				OP = colors.green,
-				BLOCK = colors.blue,
-				REPLACE = colors.violet,
-				["V-REPLACE"] = colors.violet,
-				ENTER = colors.cyan,
-				MORE = colors.cyan,
-				SELECT = colors.orange,
-				COMMAND = colors.green,
-				SHELL = colors.green,
-				TERM = colors.green,
-				NONE = colors.yellow,
-			}
-			local function file_osinfo()
-				local os = vim.bo.fileformat:upper()
-				local icon
-				if os == "UNIX" then
-					icon = "  "
-				elseif os == "MAC" then
-					icon = "  "
-				else
-					icon = "  "
-				end
-				return icon .. os
-			end
-
-			--local lsp = require 'feline.providers.lsp'
-			local vi_mode_utils = require("feline.providers.vi_mode")
-			local comps = {
-				vi_mode = {
-					left = {
-						provider = function()
-							return "  " .. vi_mode_utils.get_vim_mode() -- 
-						end,
-						hl = function()
-							local val = {
-								name = vi_mode_utils.get_mode_highlight_name(),
-								fg = vi_mode_utils.get_mode_color(),
-								-- fg = colors.bg
-							}
-							return val
-						end,
-						right_sep = " ",
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					theme = "auto",
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = {
+						statusline = { "neo-tree" },
+						winbar = {},
 					},
-					right = {
-						-- provider = '▊',
-						--provider = '' ,
-						hl = function()
-							local val = {
-								name = vi_mode_utils.get_mode_highlight_name(),
-								fg = vi_mode_utils.get_mode_color(),
-							}
-							return val
-						end,
-						left_sep = " ",
-						right_sep = " ",
+					ignore_focus = {},
+					always_divide_middle = true,
+					globalstatus = false,
+					refresh = {
+						statusline = 1000,
+						tabline = 1000,
+						winbar = 1000,
 					},
 				},
-				file = {
-					info = {
-						provider = {
-							name = "file_info",
-							opts = {
-								type = "relative-short",
-								file_readonly_icon = "  ",
-								file_modified_icon = "",
-							},
-						},
-						hl = {
-							fg = colors.blue,
-							style = "bold",
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = {
+						{
+							"filename",
+							file_status = false,
 						},
 					},
-					encoding = {
-						provider = "file_encoding",
-						left_sep = " ",
-						hl = {
-							fg = colors.violet,
-							style = "bold",
+					lualine_c = { "branch", "diff" },
+					lualine_x = {
+						{
+							"diagnostics",
+							sources = { "nvim_diagnostic" },
+							symbols = { error = " ", warn = " ", info = " " },
+						},
+						{
+							-- Lsp server name .
+							function()
+								local msg = "No Active Lsp"
+								local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+								local clients = vim.lsp.get_active_clients()
+								if next(clients) == nil then
+									return msg
+								end
+								for _, client in ipairs(clients) do
+									local filetypes = client.config.filetypes
+									if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+										return client.name
+									end
+								end
+								return msg
+							end,
+							icon = " LSP:",
 						},
 					},
-					type = {
-						provider = "file_type",
-					},
-					os = {
-						provider = file_osinfo,
-						--left_sep = ' ',
-						hl = {
-							fg = colors.violet,
-							style = "bold",
+					lualine_y = {
+						"encoding",
+						{
+							function()
+								return vim.bo.fileformat
+							end,
 						},
 					},
-					position = {
-						provider = "position",
-						left_sep = " ",
-						hl = {
-							fg = colors.cyan,
-							-- style = 'bold'
-						},
-					},
+					lualine_z = { "location" },
 				},
-				left_end = {
-					provider = function()
-						return ""
-					end,
-					hl = {
-						fg = colors.bg,
-						bg = colors.blue,
-					},
-				},
-				line_percentage = {
-					provider = "line_percentage",
-					left_sep = " ",
-					hl = {
-						style = "bold",
-					},
-				},
-				scroll_bar = {
-					provider = "scroll_bar",
-					left_sep = " ",
-					hl = {
-						fg = colors.blue,
-						style = "bold",
-					},
-				},
-				lsp = {
-					name = {
-						provider = "lsp_client_names",
-						-- left_sep = ' ',
-						--right_sep = ' ',
-						icon = " ",
-						-- icon = '慎',
-						hl = {
-							fg = colors.yellow,
-						},
-					},
-				},
-				git = {
-					branch = {
-						provider = "git_branch",
-						--icon = ' ',
-						icon = " ",
-						left_sep = " ",
-						hl = {
-							fg = colors.violet,
-							style = "bold",
-						},
-					},
-					add = {
-						provider = "git_diff_added",
-						hl = {
-							fg = colors.green,
-						},
-					},
-					change = {
-						provider = "git_diff_changed",
-						hl = {
-							fg = colors.orange,
-						},
-					},
-					remove = {
-						provider = "git_diff_removed",
-						hl = {
-							fg = colors.red,
-						},
-					},
-				},
-			}
-			local components = {
-				active = {},
-				inactive = {},
-			}
-			table.insert(components.active, {})
-			table.insert(components.active, {})
-			table.insert(components.active, {})
-			table.insert(components.inactive, {})
-			table.insert(components.inactive, {})
-			table.insert(components.inactive, {})
-			table.insert(components.active[1], comps.vi_mode.left)
-			table.insert(components.active[1], comps.file.info)
-			table.insert(components.active[1], comps.git.branch)
-			table.insert(components.active[1], comps.git.add)
-			table.insert(components.active[1], comps.git.change)
-			table.insert(components.active[1], comps.git.remove)
-			table.insert(components.inactive[1], comps.vi_mode.left)
-			table.insert(components.inactive[1], comps.file.info)
-			table.insert(components.active[3], comps.lsp.name)
-			table.insert(components.active[3], comps.file.os)
-			table.insert(components.active[3], comps.file.position)
-			table.insert(components.active[3], comps.line_percentage)
-			table.insert(components.active[3], comps.scroll_bar)
-			table.insert(components.active[3], comps.vi_mode.right)
-			require("feline").setup({
-				colors = { bg = colors.bg, fg = colors.fg },
-				components = components,
-				vi_mode_colors = vi_mode_colors,
-				force_inactive = {
-					filetypes = {
-						"lazy",
-						"neo-tree",
-						"fugitive",
-						"fugitiveblame",
-					},
-					buftypes = { "terminal" },
-					bufnames = {},
-				},
+				tabline = {},
+				winbar = {},
+				inactive_winbar = {},
+				extensions = {},
 			})
 		end,
 	},

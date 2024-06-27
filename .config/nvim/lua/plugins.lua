@@ -34,7 +34,7 @@ end
 local plugins = {
 	require("lazy.colors"),
 	require("lazy.dashboard"),
-	require("lazy.terminal"),
+	require("lazy.term"),
 	require("lazy.misc"),
 	require("lazy.window"),
 	require("lazy.filebrowser"),
