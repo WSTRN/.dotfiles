@@ -70,22 +70,12 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-i>"] = cmp.mapping.select_prev_item(),
 					["<C-k>"] = cmp.mapping.select_next_item(),
-					["<C-Space>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.abort()
-						elseif has_words_before() then
-							cmp.complete()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.confirm({
 								behavior = cmp.ConfirmBehavior.Replace,
 								select = true,
 							})
-						--cmp.select_next_item()
 						elseif luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
 						else
@@ -94,7 +84,7 @@ return {
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function()
 						if cmp.visible() then
-							cmp.select_next_item()
+							cmp.close()
 						elseif luasnip.jumpable(-1) then
 							luasnip.jump(-1)
 						else
