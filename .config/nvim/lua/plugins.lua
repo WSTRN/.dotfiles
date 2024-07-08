@@ -43,6 +43,9 @@ local plugins = {
 	require("lazy.lsp"),
 	require("lazy.completion"),
 }
+if vim.g.vscode then
+	plugins = { "folke/flash.nvim" }
+end
 
 local opts = {}
 
