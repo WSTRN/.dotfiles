@@ -81,7 +81,13 @@ return {
 			require("gitsigns").setup({})
 		end,
 	},
-	"jiangmiao/auto-pairs",
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equalent to setup({}) function
+	},
 	"RRethy/vim-illuminate", --highlight word
 	"mbbill/undotree",
 	"gcmt/wildfire.vim",
