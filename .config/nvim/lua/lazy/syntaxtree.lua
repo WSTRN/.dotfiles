@@ -104,4 +104,31 @@ return {
 			dbopts.bar.pick.pivots = "asdfjklghweruiovnmbty"
 		end,
 	},
+	{
+		"hedyhli/outline.nvim",
+		lazy = true,
+		cmd = { "Outline", "OutlineOpen" },
+		opts = {
+			keymaps = {
+				show_help = "?",
+				close = { "<Esc>", "q" },
+				goto_location = "e",
+				peek_location = "o",
+				goto_and_close = "<CR>",
+				restore_location = "H",
+				hover_symbol = "h",
+				toggle_preview = "<TAB>",
+				rename_symbol = "r",
+				code_actions = "a",
+				fold = "j",
+				fold_toggle = "t",
+				fold_toggle_all = "T",
+				unfold = "l",
+				unfold_all = "W",
+				fold_reset = "E",
+				down_and_jump = "<C-k>",
+				up_and_jump = "<C-i>",
+			},
+		},
+	},
 }

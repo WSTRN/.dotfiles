@@ -54,6 +54,51 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
+			local section = {
+				lualine_a = { "mode" },
+				lualine_b = {
+					{
+						"filename",
+						file_status = false,
+					},
+				},
+				lualine_c = { "branch", "diff" },
+				lualine_x = {
+					{
+						"diagnostics",
+						sources = { "nvim_diagnostic" },
+						symbols = { error = " ", warn = " ", info = " " },
+					},
+					{
+						-- Lsp server name .
+						function()
+							local msg = "No Active Lsp"
+							local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+							local clients = vim.lsp.get_active_clients()
+							if next(clients) == nil then
+								return msg
+							end
+							for _, client in ipairs(clients) do
+								local filetypes = client.config.filetypes
+								if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+									return client.name
+								end
+							end
+							return msg
+						end,
+						icon = " LSP:",
+					},
+				},
+				lualine_y = {
+					"encoding",
+					{
+						function()
+							return vim.bo.fileformat
+						end,
+					},
+				},
+				lualine_z = { "location" },
+			}
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -61,7 +106,7 @@ return {
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {
-						statusline = { "neo-tree" },
+						statusline = { "neo-tree", "Outline", "undotree", "diff" },
 						winbar = {},
 					},
 					ignore_focus = {},
@@ -73,51 +118,8 @@ return {
 						winbar = 1000,
 					},
 				},
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = {
-						{
-							"filename",
-							file_status = false,
-						},
-					},
-					lualine_c = { "branch", "diff" },
-					lualine_x = {
-						{
-							"diagnostics",
-							sources = { "nvim_diagnostic" },
-							symbols = { error = " ", warn = " ", info = " " },
-						},
-						{
-							-- Lsp server name .
-							function()
-								local msg = "No Active Lsp"
-								local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-								local clients = vim.lsp.get_active_clients()
-								if next(clients) == nil then
-									return msg
-								end
-								for _, client in ipairs(clients) do
-									local filetypes = client.config.filetypes
-									if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-										return client.name
-									end
-								end
-								return msg
-							end,
-							icon = " LSP:",
-						},
-					},
-					lualine_y = {
-						"encoding",
-						{
-							function()
-								return vim.bo.fileformat
-							end,
-						},
-					},
-					lualine_z = { "location" },
-				},
+				sections = section,
+				inactive_sections = section,
 				tabline = {},
 				winbar = {},
 				inactive_winbar = {},

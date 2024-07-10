@@ -79,7 +79,7 @@ wk.register({
 		["k"] = { "<cmd>Telescope keymaps<cr>", "Telescope find keymaps" },
 	},
 	["<leader>u"] = { "<cmd>UndotreeToggle<cr>", "open undo tree" },
-	-- ["<leader>m"] = { "<cmd>SymbolsOutline<cr>", "symbols outline" },
+	["<leader>m"] = { "<cmd>Outline<CR>", "Toggle syntax tree" },
 	["<leader>v"] = {
 		function()
 			require("dropbar.api").pick()
