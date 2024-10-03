@@ -87,6 +87,7 @@ return {
 							return msg
 						end,
 						icon = " LSP:",
+						color = { fg = "#bbbbbb" },
 					},
 				},
 				lualine_y = {
