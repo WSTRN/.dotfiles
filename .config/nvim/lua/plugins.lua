@@ -47,6 +47,10 @@ if vim.g.vscode then
 	plugins = { "folke/flash.nvim" }
 end
 
-local opts = {}
+local opts = {
+	ui = {
+		border = "rounded",
+	}
+}
 
 require("lazy").setup(plugins, opts)
