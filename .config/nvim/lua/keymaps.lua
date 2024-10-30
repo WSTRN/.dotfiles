@@ -77,6 +77,7 @@ wk.register({
 		["b"] = { "<cmd>Telescope buffers<cr>", "Telescope find buffer" },
 		["h"] = { "<cmd>Telescope help_tags<cr>", "Telescope find help tags" },
 		["k"] = { "<cmd>Telescope keymaps<cr>", "Telescope find keymaps" },
+		["r"] = { "<cmd>Telescope oldfiles<cr>", "Telescope find recent" },
 	},
 	["<leader>u"] = { "<cmd>UndotreeToggle<cr>", "open undo tree" },
 	["<leader>m"] = { "<cmd>Outline<CR>", "Toggle syntax tree" },
