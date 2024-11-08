@@ -81,11 +81,7 @@ return {
 					["<C-i>"] = cmp.mapping.select_prev_item(),
 					["<C-k>"] = cmp.mapping.select_next_item(),
 					["<CR>"] = function(fallback)
-						if
-							not cmp.visible()
-							or not cmp.get_selected_entry()
-							or cmp.get_selected_entry().source.name == "nvim_lsp_signature_help"
-						then
+						if not cmp.visible() or not cmp.get_selected_entry() then
 							fallback()
 						else
 							cmp.confirm({
@@ -108,11 +104,14 @@ return {
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
-							cmp.select_prev_item()
+							local index = cmp.get_selected_index()
+							if index ~= nil and index ~= 1 then
+								cmp.select_prev_item()
+							else
+								cmp.abort()
+							end
 						elseif luasnip.jumpable(-1) then
 							luasnip.jump(-1)
-						elseif has_words_before() then
-							cmp.complete()
 						else
 							fallback()
 						end

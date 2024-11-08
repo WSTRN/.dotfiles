@@ -102,12 +102,16 @@ return {
 			})
 		end,
 	},
-	--surround
-	--cs"' change surround
-	--ds"  del "
-	--ysiw] add ] surround
-	--use S' in visual mode add ' surround
-	-------------------------------------------
+--	Old text                    Command         New text
+-------------------------------------------------------------------------
+--  surr*ound_words             ysiw)           (surround_words)
+--  *make strings               ys$"            "make strings"
+--  [delete ar*ound me!]        ds]             delete around me!
+--  remove <b>HTML t*ags</b>    dst             remove HTML tags
+--  'change quot*es'            cs'"            "change quotes"
+--  <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+--  delete(functi*on calls)     dsf             function calls
+-------------------------------------------------------------------------
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -119,5 +123,5 @@ return {
 	-- NOTE:
 	-- FIX:
 	-- WARNING:
-	----------------
+	--
 }
