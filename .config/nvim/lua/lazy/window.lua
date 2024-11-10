@@ -52,6 +52,7 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		commit = "b431d228b7bbcdaea818bdc3e25b8cdbe861f056",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local section = {
@@ -81,7 +82,9 @@ return {
 							for _, client in ipairs(clients) do
 								local filetypes = client.config.filetypes
 								if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-									return client.name
+									msg = client.name
+								elseif client.name == "copilot" then
+									msg = msg.." copilot"
 								end
 							end
 							return msg
