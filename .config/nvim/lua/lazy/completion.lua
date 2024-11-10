@@ -96,13 +96,11 @@ return {
 							cmp.select_next_item()
 						elseif luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
-						elseif has_words_before() then
-							cmp.complete()
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
+					["<S-Tab>"] = cmp.mapping(function()
 						if cmp.visible() then
 							local index = cmp.get_selected_index()
 							if index ~= nil and index ~= 1 then
@@ -113,7 +111,7 @@ return {
 						elseif luasnip.jumpable(-1) then
 							luasnip.jump(-1)
 						else
-							fallback()
+							cmp.complete()
 						end
 					end, { "i", "s" }),
 				}),
