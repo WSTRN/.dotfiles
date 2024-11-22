@@ -112,9 +112,9 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-			dashboard.button("SPC ff", "  > Find file", ":Telescope find_files <CR>"),
-			dashboard.button("SPC fg", "  > Live grep", ":Telescope live_grep<CR>"),
+			dashboard.button("i", "  > New file", ":ene <BAR> startinsert <CR>"),
+			dashboard.button("f", "  > Find file", ":Telescope find_files <CR>"),
+			dashboard.button("g", "  > Live grep", ":Telescope live_grep<CR>"),
 			dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
 			dashboard.button(
 				"s",

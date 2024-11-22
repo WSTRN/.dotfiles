@@ -68,7 +68,7 @@ wk.register({
 			"go last buffer",
 		},
 		["<Backspace>"] = { "<cmd>BufferLinePickClose<cr>", "pick close buffer" },
-		["p"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
+		["t"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
 	},
 	["<leader>f"] = {
 		name = "Telescope",
@@ -87,7 +87,7 @@ wk.register({
 		end,
 		"dropbar pick",
 	},
-	["<leader>t"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
+	["<leader>d"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
 	["<leader><Space>"] = {
 		function()
 			require("flash").jump()
@@ -112,23 +112,23 @@ wk.register({
 		["e"] = { vim.diagnostic.open_float, "open diagnostic" },
 		["["] = { vim.diagnostic.goto_prev, "prev diagnostic" },
 		["]"] = { vim.diagnostic.goto_next, "next diagnostic" },
-		["f"] = {
-			function()
-				require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
-			end,
-			"Format",
-		},
+	},
+	["<leader>p"] = {
+		function()
+			require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
+		end,
+		"Format",
 	},
 }, { mode = "n" })
 
 wk.register({
-	["<leader>j"] = {
+	["<leader><space>"] = {
 		function()
 			require("flash").jump()
 		end,
 		"Flash",
 	},
-	["gf"] = {
+	["<leader>p"] = {
 		function()
 			require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
 		end,

@@ -89,7 +89,7 @@ return {
 								state.commands["toggle_node"](state)
 							end
 						end,
-						["j"] = "close_node",
+						["h"] = "close_node",
 						["o"] = function(state)
 							state.commands["open"](state)
 							local node = state.tree:get_node()
@@ -98,7 +98,7 @@ return {
 							end
 						end,
 						["<Tab>"] = { "toggle_preview", config = { use_float = true } },
-						["e"] = "open",
+						["i"] = "open",
 						["<cr>"] = function(state)
 							state.commands["open"](state)
 							local node = state.tree:get_node()

@@ -35,22 +35,10 @@ set tm=400
 "key map
 "============
 let mapleader=" "
-noremap e i
-noremap E I
-noremap i k
-noremap k j
-noremap j h
-noremap J H
-noremap I 5k
-noremap K 5j
-noremap h e
-noremap H E
+noremap K 5k
+noremap J 5j
 map s <nop>
 map S <nop>
-snoremap k k
-snoremap i i
-snoremap s s
-"map t <nop>
 map R :source $MYVIMRC<CR>
 nmap <C-s> :w<CR>
 
@@ -58,15 +46,15 @@ nmap <C-s> :w<CR>
 "split screen
 "============
 nnoremap sl :set splitright<CR>:vsplit<CR>
-nnoremap sj :set nosplitright<CR>:vsplit<CR>
-nnoremap sk :set splitbelow<CR>:split<CR>
-nnoremap si :set nosplitbelow<CR>:split<CR>
-nnoremap sh <C-w>t<C-w>H
+nnoremap sh :set nosplitright<CR>:vsplit<CR>
+nnoremap sj :set splitbelow<CR>:split<CR>
+nnoremap sk :set nosplitbelow<CR>:split<CR>
+nnoremap sb <C-w>t<C-w>H
 nnoremap sv <C-w>t<C-w>K
 noremap <LEADER>l <C-w>l
-noremap <LEADER>j <C-w>h
-noremap <LEADER>k <C-w>j
-noremap <LEADER>i <C-w>k
+noremap <LEADER>j <C-w>j
+noremap <LEADER>k <C-w>k
+noremap <LEADER>h <C-w>h
 noremap <C-left> :vertical resize-5<CR>
 noremap <C-right> :vertical resize+5<CR>
 noremap <C-up> :res +5<CR>
@@ -78,7 +66,7 @@ noremap <C-down> :res -5<CR>
 "======================
 "find help
 "======================
-nnoremap <silent> <LEADER>h :call <SID>show_documentation()<CR>
+nnoremap <silent> <LEADER>H :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','lua','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')

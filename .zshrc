@@ -93,13 +93,8 @@ alias 9='cd ~9'
 bindkey -v
 bindkey -M vicmd "a" vi-add-next
 bindkey -M vicmd "A" vi-add-eol
-bindkey -M vicmd "e" vi-insert
-bindkey -M vicmd "E" vi-insert-bol
-bindkey -M vicmd "h" vi-forward-word-end
-bindkey -M vicmd "H" vi-forward-blank-word-end
-bindkey -M vicmd "k" down-line-or-history
-bindkey -M vicmd "i" up-line-or-history
-bindkey -M vicmd "j" vi-backward-char
+bindkey -M vicmd "i" vi-insert
+bindkey -M vicmd "I" vi-insert-bol
 ###############################change cursor in vimode
 #function zle-keymap-select {
 	#if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then

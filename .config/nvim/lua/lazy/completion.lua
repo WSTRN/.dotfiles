@@ -78,8 +78,8 @@ return {
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
-					["<C-i>"] = cmp.mapping.select_prev_item(),
-					["<C-k>"] = cmp.mapping.select_next_item(),
+					["<C-k>"] = cmp.mapping.select_prev_item(),
+					["<C-j>"] = cmp.mapping.select_next_item(),
 					["<CR>"] = function(fallback)
 						if not cmp.visible() or not cmp.get_selected_entry() then
 							fallback()

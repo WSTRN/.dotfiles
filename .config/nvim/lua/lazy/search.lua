@@ -17,11 +17,10 @@ return {
 							["<C-v>"] = "select_vertical",
 						},
 						n = {
-							["k"] = "move_selection_next",
-							["i"] = "move_selection_previous",
+							["j"] = "move_selection_next",
+							["k"] = "move_selection_previous",
 							["<C-h>"] = "select_horizontal",
 							["<C-v>"] = "select_vertical",
-							["j"] = false,
 						},
 					},
 				},

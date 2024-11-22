@@ -42,7 +42,7 @@ return {
 			local dbopts = require("dropbar.configs").opts
 			local utils = require("dropbar.utils")
 			dbopts.menu.keymaps = {
-				["j"] = "<C-w>q",
+				["h"] = "<C-w>q",
 				["<Esc>"] = function()
 					utils.menu.exec("close")
 				end,
@@ -68,7 +68,6 @@ return {
 						menu:click_on(component, nil, 1, "l")
 					end
 				end,
-				["i"] = {},
 				["<LeftMouse>"] = function()
 					local menu = utils.menu.get_current()
 					if not menu then
@@ -112,22 +111,22 @@ return {
 			keymaps = {
 				show_help = "?",
 				close = { "<Esc>", "q" },
-				goto_location = "e",
+				goto_location = "i",
 				peek_location = "o",
 				goto_and_close = "<CR>",
-				restore_location = "H",
-				hover_symbol = "h",
+				restore_location = "b",
+				hover_symbol = "H",
 				toggle_preview = "<TAB>",
 				rename_symbol = "r",
 				code_actions = "a",
-				fold = "j",
+				fold = "h",
 				fold_toggle = "t",
 				fold_toggle_all = "T",
 				unfold = "l",
-				unfold_all = "W",
-				fold_reset = "E",
-				down_and_jump = "<C-k>",
-				up_and_jump = "<C-i>",
+				unfold_all = "L",
+				fold_reset = "R",
+				down_and_jump = "<C-j>",
+				up_and_jump = "<C-k>",
 			},
 		},
 	},

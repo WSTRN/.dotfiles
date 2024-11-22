@@ -22,7 +22,7 @@ end
 
 local lazy_cmd = require("lazy.view.config").commands
 local lazy_cmd_bindings = {
-	{ cmd = "install", key = "E" },
+	{ cmd = "install", key = "I" },
 }
 for _, v in ipairs(lazy_cmd_bindings) do
 	lazy_cmd[v.cmd].key = v.key
