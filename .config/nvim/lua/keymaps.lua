@@ -68,7 +68,7 @@ wk.register({
 			"go last buffer",
 		},
 		["<Backspace>"] = { "<cmd>BufferLinePickClose<cr>", "pick close buffer" },
-		["t"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
+		["b"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
 	},
 	["<leader>f"] = {
 		name = "Telescope",
@@ -87,7 +87,7 @@ wk.register({
 		end,
 		"dropbar pick",
 	},
-	["<leader>d"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
+	["<leader>t"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
 	["<leader><Space>"] = {
 		function()
 			require("flash").jump()
