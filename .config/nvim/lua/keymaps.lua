@@ -68,7 +68,7 @@ wk.register({
 			"go last buffer",
 		},
 		["<Backspace>"] = { "<cmd>BufferLinePickClose<cr>", "pick close buffer" },
-		["p"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
+		["b"] = { "<cmd>BufferLinePick<cr>", "pick buffer" },
 	},
 	["<leader>f"] = {
 		name = "Telescope",
