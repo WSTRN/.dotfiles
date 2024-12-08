@@ -1,15 +1,30 @@
 return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
+		branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 			{
-				-- only needed if you want to use the commands with "_with_window_picker" suffix
 				"s1n7ax/nvim-window-picker",
-				version = "v1.*",
+				version = "2.*",
+				config = function()
+					require("window-picker").setup({
+						filter_rules = {
+							include_current_win = false,
+							autoselect_one = true,
+							-- filter using buffer options
+							bo = {
+								-- if the file type is one of following, the window will be ignored
+								filetype = { "neo-tree", "neo-tree-popup", "notify" },
+								-- if the buffer type is one of following, the window will be ignored
+								buftype = { "terminal", "quickfix" },
+							},
+						},
+					})
+				end,
 			},
 		},
 		config = function()
