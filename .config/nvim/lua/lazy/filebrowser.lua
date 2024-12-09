@@ -98,6 +98,8 @@ return {
 						---- disable `nowait` if you have existing combos starting with this char that you want to use
 						--},
 						["<Space>"] = false,
+						["i"] = false,
+						["h"] = "show_file_details",
 						["l"] = function(state)
 							local node = state.tree:get_node()
 							if node.type == "directory" and not node:is_expanded() then
@@ -162,7 +164,11 @@ return {
 				},
 				nesting_rules = {},
 				filesystem = {
-					follow_current_file = false, -- This will find and focus the file in the active buffer every
+					follow_current_file = {
+            			enabled = false, -- This will find and focus the file in the active buffer every time
+            			--               -- the current file is changed while the tree is open.
+            			leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+          			},
 					use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
 					-- instead of relying on nvim autocmd events.
 					window = {
@@ -180,7 +186,11 @@ return {
 					},
 				},
 				buffers = {
-					follow_current_file = true, -- This will find and focus the file in the active buffer every
+					follow_current_file = {
+            			enabled = true,	 -- This will find and focus the file in the active buffer every time
+            			--               -- the current file is changed while the tree is open.
+            			leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+          			},
 					-- time the current file is changed while the tree is open.
 					group_empty_dirs = true, -- when true, empty folders will be grouped together
 					show_unloaded = true,
