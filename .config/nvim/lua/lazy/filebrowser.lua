@@ -56,7 +56,7 @@ return {
 						folder_empty = "",
 						-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
 						-- then these will never be used.
-						default = "",
+						default = "*",
 						highlight = "NeoTreeFileIcon",
 					},
 					modified = {
@@ -74,11 +74,11 @@ return {
 							added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
 							modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
 							deleted = "✖", -- this can only be used in the git_status source
-							renamed = "", -- this can only be used in the git_status source
-							--	 Status type
+							renamed = "󰁕", -- this can only be used in the git_status source
+							-- Status type
 							untracked = "",
 							ignored = "",
-							unstaged = "",
+							unstaged = "󰄱",
 							staged = "",
 							conflict = "",
 						},
@@ -165,10 +165,10 @@ return {
 				nesting_rules = {},
 				filesystem = {
 					follow_current_file = {
-            			enabled = false, -- This will find and focus the file in the active buffer every time
-            			--               -- the current file is changed while the tree is open.
-            			leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
-          			},
+						enabled = false, -- This will find and focus the file in the active buffer every time
+						--               -- the current file is changed while the tree is open.
+						leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+					},
 					use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
 					-- instead of relying on nvim autocmd events.
 					window = {
@@ -187,10 +187,10 @@ return {
 				},
 				buffers = {
 					follow_current_file = {
-            			enabled = true,	 -- This will find and focus the file in the active buffer every time
-            			--               -- the current file is changed while the tree is open.
-            			leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
-          			},
+						enabled = true, -- This will find and focus the file in the active buffer every time
+						--               -- the current file is changed while the tree is open.
+						leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+					},
 					-- time the current file is changed while the tree is open.
 					group_empty_dirs = true, -- when true, empty folders will be grouped together
 					show_unloaded = true,
