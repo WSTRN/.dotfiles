@@ -107,7 +107,7 @@ return {
 							end
 						end,
 						["j"] = "close_node",
-						["o"] = function(state)
+						["E"] = function(state)
 							state.commands["open"](state)
 							local node = state.tree:get_node()
 							if node.type ~= "directory" then
@@ -124,10 +124,8 @@ return {
 							end
 						end,
 
-						["sh"] = "open_split",
-						["sv"] = "open_vsplit",
-						-- ["S"] = "split_with_window_picker",
-						-- ["s"] = "vsplit_with_window_picker",
+						["S"] = "split_with_window_picker",
+						["s"] = "vsplit_with_window_picker",
 						["t"] = "open_tabnew",
 						["w"] = "open_with_window_picker",
 						["C"] = "close_node",
