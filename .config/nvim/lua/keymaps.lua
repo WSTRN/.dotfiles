@@ -88,6 +88,12 @@ wk.register({
 		"dropbar pick",
 	},
 	["<leader>t"] = { "<cmd>Neotree reveal toggle<cr>", "Neotree" },
+	["<leader>p"] = {
+		function()
+			require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
+		end,
+		"Format",
+	},
 	["<leader><Space>"] = {
 		function()
 			require("flash").jump()
@@ -112,23 +118,17 @@ wk.register({
 		["e"] = { vim.diagnostic.open_float, "open diagnostic" },
 		["["] = { vim.diagnostic.goto_prev, "prev diagnostic" },
 		["]"] = { vim.diagnostic.goto_next, "next diagnostic" },
-		["f"] = {
-			function()
-				require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
-			end,
-			"Format",
-		},
 	},
 }, { mode = "n" })
 
 wk.register({
-	["<leader>j"] = {
+	["<leader><Space>"] = {
 		function()
 			require("flash").jump()
 		end,
 		"Flash",
 	},
-	["gf"] = {
+	["<leader>p"] = {
 		function()
 			require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
 		end,

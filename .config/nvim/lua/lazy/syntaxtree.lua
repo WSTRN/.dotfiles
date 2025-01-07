@@ -13,6 +13,10 @@ return {
 					"go",
 					"python",
 					"vimdoc",
+					"rust",
+					"toml",
+					"json",
+					"yaml",
 				},
 				highlight = {
 					enable = true,
