@@ -68,22 +68,8 @@ wk.register({
 			"go last buffer",
 		},
 		["<Backspace>"] = {
-			-- "<cmd>BufferLinePickClose<cr>"
 			function()
-				local pick = require("bufferline.pick")
-				local bufferline = require("bufferline")
-				local nt_manager = require("neo-tree.sources.manager")
-				local nt_windid = nt_manager.get_state("filesystem").winid
-				pick.choose_then(function(id)
-					if id == vim.api.nvim_get_current_buf() then
-						if nt_windid == nil then
-							bufferline.unpin_and_close(id)
-						end
-					else
-						bufferline.unpin_and_close(id)
-					end
-				end)
-				-- vim.cmd("BufferLinePickClose")
+				vim.cmd("BufferLinePickClose")
 			end,
 			"pick close buffer",
 		},

@@ -21,6 +21,9 @@ return {
 		config = function()
 			require("bufferline").setup({
 				options = {
+					close_command = function(n)
+						Snacks.bufdelete(n) ---@diagnostic disable-line: undefined-global
+					end,
 					offsets = {
 						{
 							filetype = "neo-tree",
@@ -84,7 +87,7 @@ return {
 								if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
 									msg = client.name
 								elseif client.name == "copilot" then
-									msg = msg.." copilot"
+									msg = msg .. " copilot"
 								end
 							end
 							return msg
