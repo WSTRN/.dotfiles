@@ -1,6 +1,6 @@
 local lspservers = {
 	"pyright",
-	-- "rust_analyzer",
+	"rust_analyzer",
 	"ts_ls",
 	"lua_ls",
 	"vimls",
