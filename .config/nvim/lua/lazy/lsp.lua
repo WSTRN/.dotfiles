@@ -35,6 +35,9 @@ return {
 			-- add vim global variable
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					require("inlay-hints").on_attach(client, bufnr)
+				end,
 				settings = {
 					["Lua"] = {
 						runtime = {
@@ -115,7 +118,9 @@ return {
 		event = "LspAttach",
 		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
-			require("inlay-hints").setup()
+			require("inlay-hints").setup({
+				autocmd = { enable = false },
+			})
 		end,
 	},
 }
