@@ -36,7 +36,7 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 				settings = {
-					Lua = {
+					["Lua"] = {
 						runtime = {
 							version = "LuaJIT",
 						},
@@ -45,46 +45,6 @@ return {
 						},
 						hint = {
 							enable = true, -- inlay hints
-						},
-					},
-				},
-			})
-			-- add inlay hints for rust
-			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
-				settings = {
-					["rust-analyzer"] = {
-						inlayHints = {
-							bindingModeHints = {
-								enable = false,
-							},
-							chainingHints = {
-								enable = true,
-							},
-							closingBraceHints = {
-								enable = true,
-								minLines = 25,
-							},
-							closureReturnTypeHints = {
-								enable = "never",
-							},
-							lifetimeElisionHints = {
-								enable = "never",
-								useParameterNames = false,
-							},
-							maxLength = 25,
-							parameterHints = {
-								enable = true,
-							},
-							reborrowHints = {
-								enable = "never",
-							},
-							renderColons = true,
-							typeHints = {
-								enable = true,
-								hideClosureInitialization = false,
-								hideNamedConstructor = false,
-							},
 						},
 					},
 				},
