@@ -32,6 +32,7 @@ return {
 					capabilities = capabilities,
 				})
 			end
+			-- add vim global variable
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 				settings = {
@@ -42,9 +43,53 @@ return {
 						diagnostics = {
 							globals = { "vim" },
 						},
+						hint = {
+							enable = true, -- inlay hints
+						},
 					},
 				},
 			})
+			-- add inlay hints for rust
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				settings = {
+					["rust-analyzer"] = {
+						inlayHints = {
+							bindingModeHints = {
+								enable = false,
+							},
+							chainingHints = {
+								enable = true,
+							},
+							closingBraceHints = {
+								enable = true,
+								minLines = 25,
+							},
+							closureReturnTypeHints = {
+								enable = "never",
+							},
+							lifetimeElisionHints = {
+								enable = "never",
+								useParameterNames = false,
+							},
+							maxLength = 25,
+							parameterHints = {
+								enable = true,
+							},
+							reborrowHints = {
+								enable = "never",
+							},
+							renderColons = true,
+							typeHints = {
+								enable = true,
+								hideClosureInitialization = false,
+								hideNamedConstructor = false,
+							},
+						},
+					},
+				},
+			})
+			-- fix clangd errors
 			local clang_capabilities = capabilities
 			clang_capabilities.offsetEncoding = { "utf-16" }
 			lspconfig.clangd.setup({
@@ -103,6 +148,14 @@ return {
 				-- 	timeout_ms = 1000,
 				-- },
 			})
+		end,
+	},
+	{
+		"MysticalDevil/inlay-hints.nvim",
+		event = "LspAttach",
+		dependencies = { "neovim/nvim-lspconfig" },
+		config = function()
+			require("inlay-hints").setup()
 		end,
 	},
 }
