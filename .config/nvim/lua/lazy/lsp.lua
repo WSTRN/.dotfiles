@@ -35,9 +35,6 @@ return {
 			-- add vim global variable
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					require("inlay-hints").on_attach(client, bufnr)
-				end,
 				settings = {
 					["Lua"] = {
 						runtime = {
@@ -45,9 +42,6 @@ return {
 						},
 						diagnostics = {
 							globals = { "vim" },
-						},
-						hint = {
-							enable = true, -- inlay hints
 						},
 					},
 				},
@@ -110,16 +104,6 @@ return {
 				-- 	async = false,
 				-- 	timeout_ms = 1000,
 				-- },
-			})
-		end,
-	},
-	{
-		"MysticalDevil/inlay-hints.nvim",
-		event = "LspAttach",
-		dependencies = { "neovim/nvim-lspconfig" },
-		config = function()
-			require("inlay-hints").setup({
-				autocmd = { enable = false },
 			})
 		end,
 	},
