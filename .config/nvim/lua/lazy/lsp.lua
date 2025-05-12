@@ -1,13 +1,13 @@
 local lspservers = {
 	"pyright",
-	"rust_analyzer",
-	"ts_ls",
+	-- "rust_analyzer",
+	-- "ts_ls",
 	"lua_ls",
-	"vimls",
-	"clangd",
+	-- "vimls",
+	-- "clangd",
 	"bashls",
-	"cmake",
-	"prosemd_lsp",
+	-- "cmake",
+	-- "prosemd_lsp",
 }
 local mason_tools = {
 	"prettier", -- prettier formatter
