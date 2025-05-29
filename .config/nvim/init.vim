@@ -1,55 +1,56 @@
-if exists('g:vscode')
-	" VSCode extension
-	"============
-	"setting
-	"============
-	set number
-	syntax on
-	set wildmenu
-	set hlsearch 
-	exec "nohlsearch"
-	set ignorecase
-	set cursorline
-	set scrolloff=5
-	set showcmd
-	set wrap
-	set nocompatible
-	set mouse=a
-	set termguicolors
-	filetype on
-	filetype indent on
-	filetype plugin on
-	filetype plugin indent on
-	au BufReadPost * if line("'\'") <= line("$") | exe "normal! g'\"" | endif
-	set ts=4   ""fix clang-format
-	set sw=4
-	set hidden
-	set updatetime=100
-	set shortmess+=c
-	set tm=400
-	
-	"============
-	"key map
-	"============
-	let mapleader=" "
-	noremap e i
-	noremap E I
-	noremap i k
-	noremap k j
-	noremap j h
-	noremap J H
-	noremap I 5k
-	noremap K 5j
-	noremap h e
-	noremap H E
-	map s <nop>
-	map S <nop>
-	snoremap k k
-	snoremap i i
-	snoremap s s
-	map R :source $MYVIMRC<CR>
-	nmap <C-s> :w<CR>
+"============
+"setting
+"============
+set number
+syntax on
+set wildmenu
+set hlsearch 
+exec "nohlsearch"
+set ignorecase
+set cursorline
+set scrolloff=5
+set showcmd
+set wrap
+set nocompatible
+set mouse=a
+set termguicolors
+filetype on
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+au BufReadPost * if line("'\'") <= line("$") | exe "normal! g'\"" | endif
+set ts=4   ""fix clang-format
+"set expandtab
+set sw=4
+set hidden
+set updatetime=100
+set shortmess+=c
+set tm=400
+set modelines=0
+"============
+"key map
+"============
+let mapleader=" "
+noremap e i
+noremap E I
+noremap i k
+noremap k j
+noremap j h
+noremap J H
+noremap I 5k
+noremap K 5j
+noremap h e
+noremap H E
+map s <nop>
+map S <nop>
+snoremap k k
+snoremap i i
+snoremap s s
+map R :source $MYVIMRC<CR>
+nmap <C-s> :w<CR>
 
+if exists('g:vscode')
+" VSCode extension
 lua << EOF
 	print("VSCode Neovim")
 	require('plugins')
@@ -59,58 +60,7 @@ lua << EOF
 EOF
 
 else
-  " ordinary Neovim
-  "============
-  "setting
-  "============
-  set number
-  syntax on
-  set wildmenu
-  set hlsearch 
-  exec "nohlsearch"
-  set ignorecase
-  set cursorline
-  set scrolloff=5
-  set showcmd
-  set wrap
-  set nocompatible
-  set mouse=a
-  set termguicolors
-  filetype on
-  filetype indent on
-  filetype plugin on
-  filetype plugin indent on
-  au BufReadPost * if line("'\'") <= line("$") | exe "normal! g'\"" | endif
-  set ts=4   ""fix clang-format
-  "set expandtab
-  set sw=4
-  set hidden
-  set updatetime=100
-  set shortmess+=c
-  set tm=400
-  
-  "============
-  "key map
-  "============
-  let mapleader=" "
-  noremap e i
-  noremap E I
-  noremap i k
-  noremap k j
-  noremap j h
-  noremap J H
-  noremap I 5k
-  noremap K 5j
-  noremap h e
-  noremap H E
-  map s <nop>
-  map S <nop>
-  snoremap k k
-  snoremap i i
-  snoremap s s
-  map R :source $MYVIMRC<CR>
-  nmap <C-s> :w<CR>
-  
+" ordinary Neovim
   "============
   "split screen
   "============
