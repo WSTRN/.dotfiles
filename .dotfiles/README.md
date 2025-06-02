@@ -8,7 +8,8 @@ git init --bare ~/.dotfiles
 ```
 
 ```bash
-alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
+alias gitdotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias lazygitdotfiles='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
 ```bash
