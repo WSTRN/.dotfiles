@@ -59,36 +59,40 @@ lua << EOF
 	end, { noremap = true })
 EOF
 
+elseif has('ide')
+" IdeaVim
+	echo "IdeaVim"
+
 else
 " ordinary Neovim
-  "============
-  "split screen
-  "============
-  nnoremap sl :set splitright<CR>:vsplit<CR>
-  nnoremap sj :set nosplitright<CR>:vsplit<CR>
-  nnoremap sk :set splitbelow<CR>:split<CR>
-  nnoremap si :set nosplitbelow<CR>:split<CR>
-  nnoremap sh <C-w>t<C-w>H
-  nnoremap sv <C-w>t<C-w>K
-  noremap <LEADER>l <C-w>l
-  noremap <LEADER>j <C-w>h
-  noremap <LEADER>k <C-w>j
-  noremap <LEADER>i <C-w>k
-  noremap <C-left> :vertical resize-5<CR>
-  noremap <C-right> :vertical resize+5<CR>
-  noremap <C-up> :res +5<CR>
-  noremap <C-down> :res -5<CR>
-  "======================
-  "find help
-  "======================
-  nnoremap <silent> <LEADER>h :call <SID>show_documentation()<CR>
-  function! s:show_documentation()
-    if (index(['vim','lua','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    else
-      execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
-  endfunction
+	"============
+	"split screen
+	"============
+	nnoremap sl :set splitright<CR>:vsplit<CR>
+	nnoremap sj :set nosplitright<CR>:vsplit<CR>
+	nnoremap sk :set splitbelow<CR>:split<CR>
+	nnoremap si :set nosplitbelow<CR>:split<CR>
+	nnoremap sh <C-w>t<C-w>H
+	nnoremap sv <C-w>t<C-w>K
+	noremap <LEADER>l <C-w>l
+	noremap <LEADER>j <C-w>h
+	noremap <LEADER>k <C-w>j
+	noremap <LEADER>i <C-w>k
+	noremap <C-left> :vertical resize-5<CR>
+	noremap <C-right> :vertical resize+5<CR>
+	noremap <C-up> :res +5<CR>
+	noremap <C-down> :res -5<CR>
+	"======================
+	"find help
+	"======================
+	nnoremap <silent> <LEADER>h :call <SID>show_documentation()<CR>
+	function! s:show_documentation()
+		if (index(['vim','lua','help'], &filetype) >= 0)
+			execute 'h '.expand('<cword>')
+		else
+			execute '!' . &keywordprg . " " . expand('<cword>')
+		endif
+	endfunction
 
 lua << EOF
 	print("ordinary Neovim")
