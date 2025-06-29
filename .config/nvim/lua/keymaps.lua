@@ -121,8 +121,8 @@ wk.register({
 		["i"] = { vim.lsp.buf.implementation, "go to implementation" },
 		["td"] = { vim.lsp.buf.type_definition, "go to type definition" },
 		["e"] = { vim.diagnostic.open_float, "open diagnostic" },
-		["["] = { vim.diagnostic.goto_prev, "prev diagnostic" },
-		["]"] = { vim.diagnostic.goto_next, "next diagnostic" },
+		["p"] = { vim.diagnostic.goto_prev, "prev diagnostic" },
+		["n"] = { vim.diagnostic.goto_next, "next diagnostic" },
 	},
 }, { mode = "n" })
 
