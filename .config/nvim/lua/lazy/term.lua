@@ -5,7 +5,7 @@ return {
 		config = function()
 			require("toggleterm").setup({
 				open_mapping = [[<S-Tab>]],
-				direction = "horizontal",
+				direction = "float",
 				float_opts = {
 					border = "curved",
 				},
