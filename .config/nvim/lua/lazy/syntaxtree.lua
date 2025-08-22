@@ -37,6 +37,14 @@ return {
 		end,
 	},
 	{
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			require("treesitter-context").setup({
+				mode = "cursor",
+			})
+		end,
+	},
+	{
 		"Bekaboo/dropbar.nvim",
 		-- optional, but required for fuzzy finder support
 		dependencies = {
