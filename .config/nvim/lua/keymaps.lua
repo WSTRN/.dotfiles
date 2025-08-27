@@ -5,6 +5,18 @@ if vim.g.vscode then
 	keymap({ "n", "v" }, "<Space>j", function()
 		require("flash").jump()
 	end, opts)
+	keymap("n", "<leader>=", "<cmd>lua require('vscode').action('workbench.action.nextEditor')<CR>")
+	keymap("n", "<leader>-", "<cmd>lua require('vscode').action('workbench.action.previousEditor')<CR>")
+	keymap("n", "<leader>1", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex1')<CR>")
+	keymap("n", "<leader>2", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex2')<CR>")
+	keymap("n", "<leader>3", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex3')<CR>")
+	keymap("n", "<leader>4", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex4')<CR>")
+	keymap("n", "<leader>5", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex5')<CR>")
+	keymap("n", "<leader>6", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex6')<CR>")
+	keymap("n", "<leader>7", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex7')<CR>")
+	keymap("n", "<leader>8", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex8')<CR>")
+	keymap("n", "<leader>9", "<cmd>lua require('vscode').action('workbench.action.openEditorAtIndex9')<CR>")
+	keymap("n", "<leader>0", "<cmd>lua require('vscode').action('workbench.action.lastEditorInGroup')<CR>")
 else
 	local wk = require("which-key")
 	wk.register({
