@@ -50,7 +50,7 @@ end
 local opts = {
 	ui = {
 		border = "rounded",
-	}
+	},
 }
 
 require("lazy").setup(plugins, opts)

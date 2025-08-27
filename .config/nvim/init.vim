@@ -54,9 +54,7 @@ if exists('g:vscode')
 lua << EOF
 	print("VSCode Neovim")
 	require('plugins')
-	vim.keymap.set("n", "<leader><Space>", function()
-		require("flash").jump()
-	end, { noremap = true })
+	require('keymaps')
 EOF
 
 elseif has('ide')
