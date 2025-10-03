@@ -2,7 +2,7 @@ if vim.g.vscode then
 	local keymap = vim.keymap.set
 	local opts = { noremap = true, silent = true }
 
-	keymap({ "n", "v" }, "<Space>j", function()
+	keymap({ "n", "v" }, "<Space>g", function()
 		require("flash").jump()
 	end, opts)
 	keymap("n", "<leader>=", "<cmd>lua require('vscode').action('workbench.action.nextEditor')<CR>")
@@ -119,7 +119,7 @@ else
 			end,
 			"Format",
 		},
-		["<leader>j"] = {
+		["<leader>g"] = {
 			function()
 				require("flash").jump()
 			end,
@@ -147,7 +147,7 @@ else
 	}, { mode = "n" })
 
 	wk.register({
-		["<leader>j"] = {
+		["<leader>g"] = {
 			function()
 				require("flash").jump()
 			end,
