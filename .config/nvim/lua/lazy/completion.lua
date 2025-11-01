@@ -13,7 +13,7 @@ end
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = "LSPAttach",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -41,7 +41,6 @@ return {
 				},
 				config = function()
 					require("copilot_cmp").setup({
-						event = { "InsertEnter", "LspAttach" },
 						fix_pairs = true,
 					})
 				end,
