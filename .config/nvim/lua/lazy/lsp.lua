@@ -26,14 +26,12 @@ return {
 			local capabilities =
 				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-			local lspconfig = require("lspconfig")
+			local lspconfig = vim.lsp.config
 			for _, lsp in pairs(lspservers) do
-				lspconfig[lsp].setup({
-					capabilities = capabilities,
-				})
+				vim.lsp.config(lsp, { capabilities = capabilities })
 			end
 			-- add vim global variable
-			lspconfig.lua_ls.setup({
+			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				settings = {
 					["Lua"] = {
@@ -49,7 +47,7 @@ return {
 			-- fix clangd errors
 			local clang_capabilities = capabilities
 			clang_capabilities.offsetEncoding = { "utf-16" }
-			lspconfig.clangd.setup({
+			vim.lsp.config("clangd", {
 				capabilities = clang_capabilities,
 			})
 		end,
