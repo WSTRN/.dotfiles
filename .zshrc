@@ -119,7 +119,6 @@ bindkey -M vicmd "j" vi-backward-char
 ##export
 export EDITOR=nvim
 export TERM="tmux-256color"
-export PATH=~/.local/bin:"$PATH"
+source ~/.local_zshrc.zsh
 
 
-source ~/.localconfig.zsh
