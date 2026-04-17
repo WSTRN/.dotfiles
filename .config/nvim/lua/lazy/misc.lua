@@ -139,6 +139,8 @@ return {
 		config = function()
 			require("render-markdown").setup({
 				completions = { lsp = { enabled = true } },
+				html = { enabled = false },
+				latex = { enabled = false },
 			})
 		end,
 	},
