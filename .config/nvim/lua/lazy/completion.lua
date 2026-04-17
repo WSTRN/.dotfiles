@@ -28,23 +28,6 @@ return {
 					"rafamadriz/friendly-snippets",
 				},
 			},
-			{
-				"zbirenbaum/copilot-cmp",
-				dependencies = {
-					"zbirenbaum/copilot.lua",
-					config = function()
-						require("copilot").setup({
-							suggestion = { enabled = false },
-							panel = { enabled = false },
-						})
-					end,
-				},
-				config = function()
-					require("copilot_cmp").setup({
-						fix_pairs = true,
-					})
-				end,
-			},
 		},
 		config = function()
 			local luasnip = require("luasnip")
@@ -115,8 +98,6 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
-					-- Copilot Source
-					{ name = "copilot", group_index = 2 },
 					-- Other Sources
 					{ name = "nvim_lsp", group_index = 2 },
 					{ name = "luasnip", group_index = 2 },
@@ -126,8 +107,6 @@ return {
 				sorting = {
 					priority_weight = 2,
 					comparators = {
-						require("copilot_cmp.comparators").prioritize,
-
 						-- Below is the default comparitor list and order for nvim-cmp
 						cmp.config.compare.offset,
 						-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
