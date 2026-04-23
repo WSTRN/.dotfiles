@@ -1,7 +1,7 @@
 return {
 	"babaybus/DoxygenToolkit.vim",
 	{
-		"kyazdani42/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 		config = function()
 			require("nvim-web-devicons").set_icon({
 				dockerfile = {
