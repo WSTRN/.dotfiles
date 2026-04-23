@@ -33,7 +33,7 @@ set modelines=0
 let mapleader=" "
 noremap e i
 noremap E I
-noremap i k
+noremap <nowait> i k
 noremap k j
 noremap j h
 noremap J H
