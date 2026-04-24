@@ -21,6 +21,10 @@ gitdotfiles pull origin master
 ```
 
 ```bash
+gitdotfiles submodule update --init --recursive
+```
+
+```bash
 gitdotfiles config status.showUntrackedFiles no
 ```
 
